@@ -60,7 +60,7 @@ const OurBlog = ({blog}) => {
         </Typography>
       </CardContent>
       
-    <div style={{display:'flex' ,marginTop:'80px' , justifyContent:'flex-end'}}>
+    <div style={{display:'flex' ,marginTop:'60px' , justifyContent:'flex-end'}}>
     <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
