@@ -2,13 +2,19 @@ import React from 'react';
 import Navigation from '../../Shared/Navigation/Navigation';
 import AppointmentBanner from '../AppointmentBanner/AppointmentBanner';
 import Banner from '../Banner/Banner';
+import PatientsReviews from '../PatientsReviews/PatientsReviews';
+import Services from '../Services/Services';
+import ThingsYouShouldKnow from '../ThingsYouShouldKnow/ThingsYouShouldKnow';
 
 const Home = () => {
     return (
         <div>
             <Navigation></Navigation>
             <Banner></Banner>
+            <ThingsYouShouldKnow></ThingsYouShouldKnow>
+            <Services></Services>
             <AppointmentBanner></AppointmentBanner>
+            <PatientsReviews/>
         </div>
     );
 };

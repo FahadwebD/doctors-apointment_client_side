@@ -27,7 +27,7 @@ const AppointmentBanner = () => {
                     alignItems: 'center',
                     textAlign: 'left'
                 }}>
-                    <Box>
+                    <Box style={{padding:'10px'}}>
                         <Typography variant="h6" sx={{ mb: 5 }} style={{ color: '#5CE7ED' }}>
                             Appointment
                         </Typography>

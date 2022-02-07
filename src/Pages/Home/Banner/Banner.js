@@ -14,6 +14,7 @@ const bannerBg = {
 const verticalCenter = {
     display: 'flex',
     alignItems: 'center',
+    justifyContent:'center',
     height: 400
 }
 
@@ -34,7 +35,7 @@ const Banner = () => {
                         <Button variant="contained" style={{ backgroundColor: '#5CE7ED' }}>Get Appointment</Button>
                     </Box>
                 </Grid>
-                <Grid item xs={12} md={6} style={verticalCenter} >
+                <Grid item xs={12} md={6} style={{display:'flex' , justifyContent:'center' , alignItems:'center'}} >
                     <img style={{ width: '400px' }} src={chair} alt="" />
                 </Grid>
 
