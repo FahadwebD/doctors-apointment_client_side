@@ -1,0 +1,13 @@
+.gridBlockCard{
+    display: grid;
+    grid-template-columns: repeat( 3 , 1fr);
+    padding: 60px;
+}
+.cardss {
+    cursor: pointer;
+    padding: 20px;
+    height: 310px;
+    margin-right: 5px;
+    border-radius: 10px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
