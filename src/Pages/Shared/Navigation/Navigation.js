@@ -19,6 +19,7 @@ import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
 import LineStyleIcon from '@mui/icons-material/LineStyle';
 import { Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -63,7 +64,7 @@ const Search = styled('div')(({ theme }) => ({
 const Navigation = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
+ const {user} = useAuth();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -197,7 +198,7 @@ const Navigation = () => {
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+        {user?.email?  <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
           <Tooltip title="Dental Services" arrow>
          <Link to='/appointment' style={{ textDecoration: 'none' , color:"inherit"}}>
          <IconButton
@@ -236,7 +237,8 @@ const Navigation = () => {
             >
               <AccountCircle />
             </IconButton>
-          </Box>
+          </Box>:<Link to='/login'> Login</Link>
+        }
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
