@@ -7,12 +7,30 @@
     cursor: pointer;
     padding: 20px;
     height: 310px;
-    margin-right: 5px;
+    margin: 5px;
+   
     border-radius: 10px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+#headlineB{
+text-align:left ;
+ font-size:1.4vw;
 }
 @media(max-width: 960px){
     .gridBlockCard{
       grid-template-columns: repeat(1, 1fr); 
+    }
+    #headlineB{
+      text-align:left ;
+       font-size:4vw;
+      }
+      .cardss {
+        cursor: pointer;
+        padding: 5px;
+        height: 330px;
+        margin: 5px;
+        
+        border-radius: 10px;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     }
   }

@@ -64,7 +64,7 @@ const Search = styled('div')(({ theme }) => ({
 const Navigation = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
- const {user} = useAuth();
+ const {user , logout} = useAuth();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -104,6 +104,7 @@ const Navigation = () => {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={logout}>Log Out</MenuItem>
     </Menu>
   );
 
@@ -239,7 +240,7 @@ const Navigation = () => {
             </IconButton>
           </Box>:<Link to='/login'> Login</Link>
         }
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+         {user?.email? <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="show more"
@@ -250,7 +251,7 @@ const Navigation = () => {
             >
               <MoreIcon />
             </IconButton>
-          </Box>
+          </Box>:''}
         </Toolbar>
       </AppBar>
       {renderMobileMenu}

@@ -2,14 +2,15 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import doctor from '../../../images/doctor.png'
-import bg from '../../../images/appointment-bg.png'
+import bg from '../../../images/chair.png'
 import { Button, Typography } from '@mui/material';
 
 const appointmentBanner = {
     background: `url(${bg})`,
     backgroundColor: 'rgba(45, 58, 74, 0.9)',
     backgroundBlendMode: 'darken, luminosity',
-    marginTop: 175
+    marginTop: 175,
+    
 }
 
 const AppointmentBanner = () => {

@@ -9,7 +9,10 @@ const Calendar = ({ date, setDate }) => {
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns}>
             <StaticDatePicker
-                displayStaticWrapperAs="desktop"
+                // className={classes.root}
+                
+                orientation="landscape"
+                openTo="day"
                 value={date}
                 onChange={(newValue) => {
                     setDate(newValue);
