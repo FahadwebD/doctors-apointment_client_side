@@ -15,8 +15,10 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-
-
+import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
+import LineStyleIcon from '@mui/icons-material/LineStyle';
+import { Tooltip } from '@mui/material';
+import { Link } from 'react-router-dom';
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -123,6 +125,14 @@ const Navigation = () => {
     >
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+          
+            <MedicalServicesIcon />
+          
+        </IconButton>
+        <p>Dental Services</p>
+      </MenuItem>
+      <MenuItem>
+        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
             <MailIcon />
           </Badge>
@@ -188,6 +198,19 @@ const Navigation = () => {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <Tooltip title="Dental Services" arrow>
+         <Link to='/appointment' style={{ textDecoration: 'none' , color:"inherit"}}>
+         <IconButton
+              size="large"
+              aria-label="show 17 new notifications"
+              color="inherit"
+            >
+            
+                <MedicalServicesIcon/>
+               
+            </IconButton>
+         </Link>
+            </Tooltip>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="error">
                 <MailIcon />
