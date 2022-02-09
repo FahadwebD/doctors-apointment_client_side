@@ -63,11 +63,11 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
             }}
         >
             <Fade in={openBooking}>
-                <Box sx={style}>
-                    <Typography id="transition-modal-title" variant="h6" component="h2">
+                <Box sx={style} style={{border:'none' , width:'600px' , padding:'20px' , borderRadius:'10px' ,margin:'20px'}}>
+                    <Typography style={{textAlign:"center" , color:'#5CE7ED'}} id="transition-modal-title" variant="h6" component="h2">
                         {name}
                     </Typography>
-                    <form onSubmit={handleBookingSubmit}>
+                    <form onSubmit={handleBookingSubmit} style={{ maxWidth:'550px',margin:'30px 30px 30px 70px'}}>
                         <TextField
                             disabled
                             sx={{ width: '90%', m: 1 }}
@@ -106,7 +106,8 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
                             defaultValue={date.toDateString()}
                             size="small"
                         />
-                        <Button type="submit" variant="contained">Submit</Button>
+                        <div style={{ textAlign:'right' , marginRight:'40px'}}><Button style={{backgroundColor:'#5CE7ED' }} type="submit" variant="contained">Send</Button></div>
+                        
                     </form>
                 </Box>
             </Fade>
