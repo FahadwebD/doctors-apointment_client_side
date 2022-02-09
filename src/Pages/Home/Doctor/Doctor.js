@@ -7,7 +7,7 @@ const Doctor = ({ doctor }) => {
         <Grid item xs={12} sm={6} md={4}>
             <img
                 style={{ width: '200px', height: '300px' }}
-                src={image} alt="" />
+                src={`data:image/png;base64,${image}`} alt="" />
             <h3>{name}</h3>
         </Grid>
     );
