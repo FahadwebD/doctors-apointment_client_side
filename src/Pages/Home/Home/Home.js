@@ -1,5 +1,7 @@
+
 import React from 'react';
 import AddDoctor from '../../Dashboard/AddDoctor/AddDoctor';
+import DashboardHome from '../../Dashboard/DashboardHome/DashboardHome';
 import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigation/Navigation';
 import AppointmentBanner from '../AppointmentBanner/AppointmentBanner';
@@ -25,6 +27,7 @@ const Home = () => {
             <ContactUs></ContactUs>
             <Footer></Footer>
             <AddDoctor></AddDoctor>
+            <DashboardHome></DashboardHome>
         </div>
     );
 };
