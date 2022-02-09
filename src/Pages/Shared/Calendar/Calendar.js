@@ -10,7 +10,10 @@ const Calendar = ({ date, setDate }) => {
         <LocalizationProvider dateAdapter={AdapterDateFns}>
             <StaticDatePicker
                 // className={classes.root}
-                
+                sx={{
+                    
+                    '& .MuiButtonBase-root-MuiPickersDay-root': { backgroundColor:'blue' },
+                }}
                 orientation="landscape"
                 openTo="day"
                 value={date}
