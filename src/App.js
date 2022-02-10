@@ -10,6 +10,7 @@ import Appointment from './Pages/Appointment/Appointment/Appointment';
 import AuthProvider from './context/AuthProvider/AuthProvider';
 import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
+import Dashboard from './Pages/Dashboard/Dashboard/Dashboard';
 
 
 
@@ -28,6 +29,8 @@ function App() {
       <Route exact path="/login" element={<Login />}>
       </Route>
       <Route exact path="/register" element={<Register />}>
+      </Route>
+      <Route exact path="/dashboard" element={<Dashboard />}>
       </Route>
       </Routes>
     </Router>
