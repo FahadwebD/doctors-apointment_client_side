@@ -16,6 +16,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
+import ReviewsIcon from '@mui/icons-material/Reviews';
 import Avatar from '@mui/material/Avatar';
 import { Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -136,6 +137,14 @@ const Navigation = () => {
       </MenuItem>
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+          
+            <MedicalServicesIcon />
+          
+        </IconButton>
+        <p>Dental Services</p>
+      </MenuItem>
+      <MenuItem>
+        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="error">
             <MailIcon />
           </Badge>
@@ -201,6 +210,7 @@ const Navigation = () => {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
         {user?.email?  <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+        <div style={{marginTop:'10px'}}>
           <Tooltip title="Dental Services" arrow>
          <Link to='/appointment' style={{ textDecoration: 'none' , color:"inherit"}}>
          <IconButton
@@ -214,6 +224,23 @@ const Navigation = () => {
             </IconButton>
          </Link>
             </Tooltip>
+            </div>
+            <div style={{marginTop:'10px'}}>
+            <Tooltip title="Give Us You Valuable Reviews" arrow>
+         <Link to='/appointment' style={{ textDecoration: 'none' , color:"inherit"}}>
+         <IconButton
+              size="large"
+              aria-label="show 17 new notifications"
+              color="inherit"
+              
+            >
+            
+                <ReviewsIcon/>
+               
+            </IconButton>
+         </Link>
+            </Tooltip>
+            </div>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="error">
                 <MailIcon />
