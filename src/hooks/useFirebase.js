@@ -10,7 +10,7 @@ const useFirebase = () => {
     const [user, setUser] = useState({});
     const [isLoading, setIsLoading] = useState(true);
     const [authError, setAuthError] = useState('');
- 
+    const [admin, setAdmin] = useState(false);
     const [token, setToken] = useState('');
 
     const auth = getAuth();
@@ -24,7 +24,7 @@ const useFirebase = () => {
                 const newUser = { email, displayName: name };
                 setUser(newUser);
                 // save user to the database
-                
+                saveUser(email, name, 'POST');
                 // send name to firebase after creation
                 updateProfile(auth.currentUser, {
                     displayName: name
@@ -85,7 +85,11 @@ const useFirebase = () => {
         return () => unsubscribed;
     }, [auth])
 
-    
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
 
     const logout = () => {
         setIsLoading(true);
@@ -111,7 +115,7 @@ const useFirebase = () => {
 
     return {
         user,
-  
+        admin,
         token,
         isLoading,
         authError,
