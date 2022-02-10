@@ -16,7 +16,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
-import LineStyleIcon from '@mui/icons-material/LineStyle';
+import Avatar from '@mui/material/Avatar';
 import { Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
@@ -65,6 +65,7 @@ const Navigation = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
  const {user , logout} = useAuth();
+ console.log(user)
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -161,7 +162,7 @@ const Navigation = () => {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          {user?.photoURL?<Avatar alt="doctors" src={user?.photoURL} />:<AccountCircle/>}
         </IconButton>
         <p>Profile</p>
       </MenuItem>
@@ -236,7 +237,7 @@ const Navigation = () => {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              {user?.photoURL?<Avatar alt="doctors" src={user?.photoURL} />:<AccountCircle/>}
             </IconButton>
           </Box>:<Link to='/login'> Login</Link>
         }
