@@ -28,6 +28,7 @@ import AddDoctor from '../AddDoctor/AddDoctor';
 import useAuth from './../../../hooks/useAuth';
 import AdminRoute from './../../Login/AdminRoute/AdminRoute';
 import Payment from '../Payment/Payment';
+import MakeDoctor from '../MakeDoctor/MakeDoctor';
 
 const drawerWidth = 200;
 
@@ -49,6 +50,7 @@ function Dashboard(props) {
             {admin && <Box>
                 <Link to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
                 <Link to={`${url}/addDoctor`}><Button color="inherit">Add Doctor</Button></Link>
+                <Link to={`${url}/makeDoctor`}><Button color="inherit">Make Doctor</Button></Link>
             </Box>}
             <List>
                 {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
@@ -136,6 +138,9 @@ function Dashboard(props) {
                     </Route>
                     <AdminRoute path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/makeDoctor`}>
+                        <MakeDoctor></MakeDoctor>
                     </AdminRoute>
                     <AdminRoute path={`${path}/addDoctor`}>
                         <AddDoctor></AddDoctor>

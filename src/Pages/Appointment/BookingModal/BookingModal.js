@@ -7,7 +7,8 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import useAuth from '../../../hooks/useAuth';
-
+import useDoctors from '../../../hooks/useDoctors'
+import { MenuItem } from '@mui/material';
 
 const style = {
     position: 'absolute',
@@ -20,13 +21,37 @@ const style = {
     boxShadow: 24,
     p: 4,
 };
+const currencies = [
+    {
+      value: 'USD',
+      label: '$',
+    },
+    {
+      value: 'EUR',
+      label: '€',
+    },
+    {
+      value: 'BTC',
+      label: '฿',
+    },
+    {
+      value: 'JPY',
+      label: '¥',
+    },
+  ];
 
 const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBookingSuccess }) => {
+    const [doctor, setDoctor] = React.useState('fahad');
     const { name, time, price } = booking;
+    const {doctors} = useDoctors()
     const { user } = useAuth();
     const initialInfo = { patientName: user.displayName, email: user.email, phone: '' }
     const [bookingInfo, setBookingInfo] = useState(initialInfo);
 
+
+    
+
+   
     const handleOnBlur = e => {
         const field = e.target.name;
         const value = e.target.value;
@@ -39,11 +64,13 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
         // collect data
         const appointment = {
             ...bookingInfo,
+            selectedDoctor:doctor,
             time,
             price,
             serviceName: name,
             date: date.toLocaleDateString()
         }
+        console.log(appointment)
         // send to the server
         fetch('http://localhost:5000/appointments', {
             method: 'POST',
@@ -62,6 +89,12 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
 
         e.preventDefault();
     }
+    const handleChange = (event) => {
+        setDoctor(event.target.value);
+      };
+   console.log(doctor)
+   console.log(doctors)
+   
 
     return (
         <Modal
@@ -101,8 +134,12 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
                             id="outlined-size-small"
                             name="email"
                             onBlur={handleOnBlur}
-                            defaultValue={'fahad@gmail.com'}
+                            label="Read Only"
+                            defaultValue={user?.email}
                             size="small"
+                            InputProps={{
+                                readOnly: true,
+                              }}
                         />
                         <TextField
                             sx={{ width: '90%', m: 1 }}
@@ -119,6 +156,22 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
                             defaultValue={date.toDateString()}
                             size="small"
                         />
+                        <TextField
+
+          sx={{ width: '90%', m: 1 }}
+          id="outlined-size-small"
+          select
+          label="Select which Doctor Appointment You Want"
+          value={doctors?.email}
+          onChange={handleChange}
+          helperText="Please select your doctor"
+        >
+          {doctors?.map((option) => (
+            <MenuItem key={option?._id} value={option?.email}>
+              Dr .{option?.name}
+            </MenuItem>
+          ))}
+        </TextField>
                         <div style={{ textAlign:'right' , marginRight:'40px'}}><Button style={{backgroundColor:'#5CE7ED' }} type="submit" variant="contained">Send</Button></div>
                         
                     </form>

@@ -1,7 +1,7 @@
 import initializeFirebase from "../Pages/Login/Login/Firebase/firebase.init";
 import { useState, useEffect } from 'react';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, updateProfile, getIdToken, signOut } from "firebase/auth";
-
+import useDoctors from './useDoctors'
 
 // initialize firebase app
 initializeFirebase();
@@ -11,7 +11,9 @@ const useFirebase = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [authError, setAuthError] = useState('');
     const [admin, setAdmin] = useState(false);
-  
+    const [doctor, setDoctor] = useState(false);
+    const [dashboardUse ,setDashboardUse] = useState(false)
+    const {doctors} = useDoctors()
 
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
@@ -85,7 +87,16 @@ const useFirebase = () => {
     useEffect(() => {
         fetch(`http://localhost:5000/users/${user.email}`)
             .then(res => res.json())
-            .then(data => setAdmin(data.admin))
+            .then(data => {
+                if(data.hisRole === 'admin'){
+                    setAdmin(true)
+                    setDashboardUse(true)
+                }
+                else if(data.hisRole === 'doctor'){
+                    setDoctor(true)
+                    setDashboardUse(true)
+                }
+            })
     }, [user.email])
 
     const logout = () => {
@@ -113,7 +124,8 @@ const useFirebase = () => {
     return {
         user,
         admin,
-       
+        dashboardUse,
+        doctor,
         isLoading,
         authError,
         registerUser,

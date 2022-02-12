@@ -17,6 +17,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
 import ReviewsIcon from '@mui/icons-material/Reviews';
+import DashboardCustomizeRoundedIcon from '@mui/icons-material/DashboardCustomizeRounded';
 import Avatar from '@mui/material/Avatar';
 import { Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -65,8 +66,8 @@ const Search = styled('div')(({ theme }) => ({
 const Navigation = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
- const {user , logout ,admin} = useAuth();
- console.log(admin)
+ const {user , logout ,dashboardUse} = useAuth();
+
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -130,10 +131,18 @@ const Navigation = () => {
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           
-            <MedicalServicesIcon />
+            <DashboardCustomizeRoundedIcon />
           
         </IconButton>
-        <p>Dental Services</p>
+        <p>Give your valuable reviews</p>
+      </MenuItem>
+      <MenuItem>
+        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+          
+            <ReviewsIcon />
+          
+        </IconButton>
+        <p>Give your valuable reviews</p>
       </MenuItem>
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
@@ -209,7 +218,38 @@ const Navigation = () => {
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
-        {user?.email?  <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+        {user?.email? <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+        {dashboardUse?<div style={{marginTop:'10px'}}>
+          <Tooltip title="Dashboard" arrow>
+         <Link to='/dashboard' style={{ textDecoration: 'none' , color:"inherit"}}>
+         <IconButton
+              size="large"
+              aria-label="show 17 new notifications"
+              color="inherit"
+            >
+            
+                <DashboardCustomizeRoundedIcon/>
+               
+            </IconButton>
+         </Link>
+            </Tooltip>
+            </div>:<div style={{marginTop:'10px'}}>
+            <Tooltip title="Give Us You Valuable Reviews" arrow>
+         <Link to='/appointment' style={{ textDecoration: 'none' , color:"inherit"}}>
+         <IconButton
+              size="large"
+              aria-label="show 17 new notifications"
+              color="inherit"
+              
+            >
+            
+                <ReviewsIcon/>
+               
+            </IconButton>
+         </Link>
+            </Tooltip>
+            </div>}
+            
         <div style={{marginTop:'10px'}}>
           <Tooltip title="Dental Services" arrow>
          <Link to='/appointment' style={{ textDecoration: 'none' , color:"inherit"}}>
@@ -225,36 +265,9 @@ const Navigation = () => {
          </Link>
             </Tooltip>
             </div>
-            <div style={{marginTop:'10px'}}>
-            <Tooltip title="Give Us You Valuable Reviews" arrow>
-         <Link to='/appointment' style={{ textDecoration: 'none' , color:"inherit"}}>
-         <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-              
-            >
-            
-                <ReviewsIcon/>
-               
-            </IconButton>
-         </Link>
-            </Tooltip>
-            </div>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+           
+           
+           
             <IconButton
               size="large"
               edge="end"
