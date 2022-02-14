@@ -218,8 +218,8 @@ const Navigation = () => {
             />
           </Search>
           <Box sx={{ flexGrow: 1 }} />
-        {user?.email? <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-        {dashboardUse?<div style={{marginTop:'10px'}}>
+
+          {dashboardUse ?<div style={{marginTop:'10px'}}>
           <Tooltip title="Dashboard" arrow>
          <Link to='/dashboard' style={{ textDecoration: 'none' , color:"inherit"}}>
          <IconButton
@@ -233,7 +233,7 @@ const Navigation = () => {
             </IconButton>
          </Link>
             </Tooltip>
-            </div>:<div style={{marginTop:'10px'}}>
+            </div>:   <div style={{marginTop:'10px'}}>
             <Tooltip title="Give Us You Valuable Reviews" arrow>
          <Link to='/appointment' style={{ textDecoration: 'none' , color:"inherit"}}>
          <IconButton
@@ -249,6 +249,8 @@ const Navigation = () => {
          </Link>
             </Tooltip>
             </div>}
+        {user?.email? <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+     
             
         <div style={{marginTop:'10px'}}>
           <Tooltip title="Dental Services" arrow>

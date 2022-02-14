@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
+import Patient from '../Patient';
 
 const Patients = () => {
     const [orders , setOrders] = useState([])
@@ -9,11 +10,11 @@ const Patients = () => {
         fetch(url)
         .then(res => res.json())
         .then(data => setOrders(data))
-    },[])
+    },[user])
     console.log(orders)
     return (
         <div>
-            <h1>Hi</h1>
+            {orders.map(order => <Patient order={order}></Patient>)}
         </div>
     );
 };

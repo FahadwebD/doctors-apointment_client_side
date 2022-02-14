@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Input, TextField } from '@mui/material';
+import DoctorsList from '../DoctorsList/DoctorsList';
 
 const AddDoctor = () => {
     const [name, setName] = useState('');
@@ -34,6 +35,7 @@ const AddDoctor = () => {
     }
 
     return (
+        <>
         <div>
             <h3>Add A Doctor</h3>
             <form onSubmit={handleSubmit}>
@@ -64,6 +66,8 @@ const AddDoctor = () => {
             </form>
             {success && <p style={{ color: 'green' }}>{success}</p>}
         </div>
+        <div><DoctorsList></DoctorsList></div>
+        </>
     );
 };
 
