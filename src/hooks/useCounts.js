@@ -21,7 +21,7 @@ const useCounts = ()=>{
 
         fetch('http://localhost:5000/users')
         .then(res => res.json())
-        .then(data => setAllPatients(data))
+        .then(data => setAllPatients(data.filter(d=> !d.role)))
 
 
     },[])
