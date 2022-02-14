@@ -13,7 +13,7 @@ const Patients = () => {
     console.log(orders)
     return (
         <div>
-            
+            <h1>Hi</h1>
         </div>
     );
 };

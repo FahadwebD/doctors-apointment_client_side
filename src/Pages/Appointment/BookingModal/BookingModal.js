@@ -68,7 +68,8 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
             time,
             price,
             serviceName: name,
-            date: date.toLocaleDateString()
+            date: date.toLocaleDateString(),
+            status:'pending'
         }
         console.log(appointment)
         // send to the server

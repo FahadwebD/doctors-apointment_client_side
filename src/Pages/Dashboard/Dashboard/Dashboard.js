@@ -29,39 +29,51 @@ import useAuth from './../../../hooks/useAuth';
 import AdminRoute from './../../Login/AdminRoute/AdminRoute';
 import Payment from '../Payment/Payment';
 import MakeDoctor from '../MakeDoctor/MakeDoctor';
+import LineStyleIcon from '@mui/icons-material/LineStyle';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+import Patients from '../../Pateints/Patients/Patients';
+import MainDashboard from '../MainDashboard/MainDashboard';
+const drawerWidth = 250;
 
-const drawerWidth = 200;
+
 
 function Dashboard(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     let { path, url } = useRouteMatch();
-    const { admin } = useAuth();
+    const { admin , doctor } = useAuth();
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
+    
 
+   
     const drawer = (
-        <div>
+        <div style={{backgroundColor:'#5CE7ED' , height:'100%'}}>
             <Toolbar />
-            <Divider />
-            <Link to="/appointment"><Button color="inherit">Appointment</Button></Link>
-            <Link to={`${url}`}><Button color="inherit">Dashboard</Button></Link>
+       
+            
+            {doctor && <Box>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><LineStyleIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}`}><Button color="inherit">Dashboard</Button></Link></div>
+            <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><CalendarTodayIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}}  to={`${url}/appointments`}><Button color="inherit">Appointment</Button></Link></div>
+            <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><PeopleAltIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/patients`}><Button color="inherit">Patients</Button></Link></div>
+                
+                
+                </Box>}
+            
             {admin && <Box>
-                <Link to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link>
-                <Link to={`${url}/addDoctor`}><Button color="inherit">Add Doctor</Button></Link>
-                <Link to={`${url}/makeDoctor`}><Button color="inherit">Make Doctor</Button></Link>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><Link to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link> </div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><Link to={`${url}/addDoctor`}><Button color="inherit">Add Doctor</Button></Link></div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><Link to={`${url}/makeDoctor`}><Button color="inherit">Make Doctor</Button></Link></div>
             </Box>}
-            <List>
-                {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                    <ListItem button key={text}>
-                        <ListItemIcon>
-                            {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                        </ListItemIcon>
-                        <ListItemText primary={text} />
-                    </ListItem>
-                ))}
-            </List>
+            
+               
+                    
+                        
+                            
+                      
+           
         </div>
     );
 
@@ -75,6 +87,8 @@ function Dashboard(props) {
                 sx={{
                     width: { sm: `calc(100% - ${drawerWidth}px)` },
                     ml: { sm: `${drawerWidth}px` },
+                    backgroundColor:'white',
+                    border: 'none'
                 }}
             >
                 <Toolbar>
@@ -87,8 +101,8 @@ function Dashboard(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
-                        Dashboard
+                    <Typography sx={{color:'black'}} variant="h6" noWrap component="div">
+                        Appointments
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -131,7 +145,13 @@ function Dashboard(props) {
 
                 <Switch>
                     <Route exact path={path}>
+                        <MainDashboard></MainDashboard>
+                    </Route>
+                    <Route exact path={`${path}/appointments`}>
                         <DashboardHome></DashboardHome>
+                    </Route>
+                    <Route path={`${path}/patients`}>
+                        <Patients></Patients>
                     </Route>
                     <Route path={`${path}/payment/:appointmentId`}>
                         <Payment></Payment>
