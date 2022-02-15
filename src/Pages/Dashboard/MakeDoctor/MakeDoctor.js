@@ -32,7 +32,7 @@ const MakeDoctor = () => {
     }
     return (
         <div>
-            <h2>Make an Admin</h2>
+            <h2>Add Role and give access </h2>
             <form onSubmit={handleAdminSubmit}>
                 <TextField
                     sx={{ width: '50%' }}
@@ -40,9 +40,9 @@ const MakeDoctor = () => {
                     type="email"
                     onBlur={handleOnBlur}
                     variant="standard" />
-                <Button type="submit" variant="contained">Make Admin</Button>
+                <Button type="submit" variant="contained">Add Doctor Role</Button>
             </form>
-            {success && <Alert severity="success">Made Admin successfully!</Alert>}
+            {success && <Alert severity="success">Made Doctor successfully!</Alert>}
 
             
         </div>

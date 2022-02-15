@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Input, TextField } from '@mui/material';
 import DoctorsList from '../DoctorsList/DoctorsList';
+import MakeDoctor from '../MakeDoctor/MakeDoctor';
 
 const AddDoctor = () => {
     const [name, setName] = useState('');
@@ -67,6 +68,7 @@ const AddDoctor = () => {
             {success && <p style={{ color: 'green' }}>{success}</p>}
         </div>
         <div><DoctorsList></DoctorsList></div>
+        <div><MakeDoctor></MakeDoctor></div>
         </>
     );
 };

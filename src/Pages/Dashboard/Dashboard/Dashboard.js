@@ -63,9 +63,9 @@ function Dashboard(props) {
                 </Box>}
             
             {admin && <Box>
-                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><Link to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link> </div>
-                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><Link to={`${url}/addDoctor`}><Button color="inherit">Add Doctor</Button></Link></div>
-                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><Link to={`${url}/makeDoctor`}><Button color="inherit">Make Doctor</Button></Link></div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <PeopleAltIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link> </div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <PeopleAltIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/addDoctor`}><Button color="inherit">Add Doctor</Button></Link></div>
+                
             </Box>}
             
                
@@ -159,9 +159,7 @@ function Dashboard(props) {
                     <AdminRoute path={`${path}/makeAdmin`}>
                         <MakeAdmin></MakeAdmin>
                     </AdminRoute>
-                    <AdminRoute path={`${path}/makeDoctor`}>
-                        <MakeDoctor></MakeDoctor>
-                    </AdminRoute>
+                   
                     <AdminRoute path={`${path}/addDoctor`}>
                         <AddDoctor></AddDoctor>
                     </AdminRoute>
