@@ -18,7 +18,7 @@ const AddDoctor = () => {
         formData.append('name', name);
         formData.append('email', email);
         formData.append('image', image);
-
+      console.log(formData)
         fetch('http://localhost:5000/doctors', {
             method: 'POST',
             body: formData

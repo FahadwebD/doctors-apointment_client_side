@@ -34,6 +34,8 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import Patients from '../../Pateints/Patients/Patients';
 import MainDashboard from '../MainDashboard/MainDashboard';
+import DoctorRoute from '../../Login/DoctorRoute/DoctorRoute';
+import DoctorBlogs from '../DoctorBlogs/DoctorBlogs';
 const drawerWidth = 250;
 
 
@@ -58,6 +60,7 @@ function Dashboard(props) {
                 <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><LineStyleIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}`}><Button color="inherit">Dashboard</Button></Link></div>
             <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><CalendarTodayIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}}  to={`${url}/appointments`}><Button color="inherit">Appointment</Button></Link></div>
             <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><PeopleAltIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/patients`}><Button color="inherit">Patients</Button></Link></div>
+            <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><PeopleAltIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/writeBlogs`}><Button color="inherit">Write Blogs</Button></Link></div>
                 
                 
                 </Box>}
@@ -150,9 +153,12 @@ function Dashboard(props) {
                     <Route exact path={`${path}/appointments`}>
                         <DashboardHome></DashboardHome>
                     </Route>
-                    <Route path={`${path}/patients`}>
+                    <DoctorRoute path={`${path}/patients`}>
                         <Patients></Patients>
-                    </Route>
+                    </DoctorRoute>
+                    <DoctorRoute path={`${path}/writeBlogs`}>
+                        <DoctorBlogs></DoctorBlogs>
+                    </DoctorRoute>
                     <Route path={`${path}/payment/:appointmentId`}>
                         <Payment></Payment>
                     </Route>
