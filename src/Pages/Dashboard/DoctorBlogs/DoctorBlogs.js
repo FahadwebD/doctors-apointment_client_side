@@ -4,16 +4,19 @@ import TextField from '@mui/material/TextField';
 import Rating from '@mui/material/Rating';
 import { Button, Input } from '@mui/material';
 import useAuth from '../../../hooks/useAuth';
+import useBlogs from '../../../hooks/useBlogs';
 
 
 
 const DoctorBlogs = () => {
     const {user } = useAuth()
+    const {blogs} = useBlogs()
     const [heading, setHeading] = React.useState('');
     const [value, setValue] = React.useState('');
     const [photoUrl , setPhotoUrl] = React.useState('')
     const [success, setSuccess] = React.useState(false);
     const [image, setImage] = React.useState(null);
+    console.log(blogs)
     const handleHeading = (event) => {
         setHeading(event.target.value);
       };
@@ -64,7 +67,7 @@ const DoctorBlogs = () => {
                 console.error('Error:', error);
             });
     }
-
+   
   
     return (
         <div>
