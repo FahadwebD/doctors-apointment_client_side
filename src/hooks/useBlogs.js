@@ -7,7 +7,7 @@ const useBlogs=()=>{
    const {user} = useAuth()
 
     useEffect(() => {
-        const url = `http://localhost:5000/blogs/${user.email}`
+        const url = `https://floating-cliffs-15059.herokuapp.com/blogs/${user.email}`
         fetch(url)
             .then(res => res.json())
             .then(data => setBlogs(data));

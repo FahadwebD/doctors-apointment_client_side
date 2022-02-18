@@ -12,7 +12,7 @@ const MakeDoctor = () => {
     }
     const handleAdminSubmit = e => {
         const user = { email };
-        fetch('http://localhost:5000/users/doctor', {
+        fetch('https://floating-cliffs-15059.herokuapp.com/users/doctor', {
             method: 'PUT',
             headers: {
                 

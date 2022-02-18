@@ -10,7 +10,7 @@ const useCounts = ()=>{
     useEffect(()=>{
 
 
-        fetch('http://localhost:5000/all/appointments')
+        fetch('https://floating-cliffs-15059.herokuapp.com/all/appointments')
         .then(res => res.json())
         .then(data => setAppointments(data))
 
@@ -19,7 +19,7 @@ const useCounts = ()=>{
     useEffect(()=>{
 
 
-        fetch('http://localhost:5000/users')
+        fetch('https://floating-cliffs-15059.herokuapp.com/users')
         .then(res => res.json())
         .then(data => setAllPatients(data.filter(d=> !d.role)))
 
@@ -28,7 +28,7 @@ const useCounts = ()=>{
     useEffect(()=>{
 
 
-        fetch('http://localhost:5000/panding/appointments')
+        fetch('https://floating-cliffs-15059.herokuapp.com/panding/appointments')
         .then(res => res.json())
         .then(data => setPendingAppointments(data))
 
@@ -37,7 +37,7 @@ const useCounts = ()=>{
     useEffect(()=>{
 
 
-        fetch('http://localhost:5000/today/appointments')
+        fetch('https://floating-cliffs-15059.herokuapp.com/today/appointments')
         .then(res => res.json())
         .then(data => setTodayAppointments(data))
 

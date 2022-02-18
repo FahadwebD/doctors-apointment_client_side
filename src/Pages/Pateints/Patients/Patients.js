@@ -55,7 +55,7 @@ const Patients = () => {
     const [orders , setOrders] = useState([])
     const {user} = useAuth()
     useEffect(()=>{
-        const url =`http://localhost:5000/appointments/${user.email}`
+        const url =`https://floating-cliffs-15059.herokuapp.com/appointments/${user.email}`
         fetch(url)
         .then(res => res.json())
         .then(data => setOrders(data))

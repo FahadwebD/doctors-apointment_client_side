@@ -19,7 +19,7 @@ const AddDoctor = () => {
         formData.append('email', email);
         formData.append('image', image);
       console.log(formData)
-        fetch('http://localhost:5000/doctors', {
+        fetch('https://floating-cliffs-15059.herokuapp.com/doctors', {
             method: 'POST',
             body: formData
         })

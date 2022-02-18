@@ -52,7 +52,7 @@ const DoctorBlogs = () => {
         formData.append('publishDate',  today );
         formData.append('blogImage', image);
     
-        fetch('http://localhost:5000/blogs', {
+        fetch('https://floating-cliffs-15059.herokuapp.com/blogs', {
             method: 'POST',
             body: formData
         })
