@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -19,6 +19,18 @@ const MainDashboard = () => {
     const {pendingAppointments , appointments,
         allPatients,
         todayAppointments} = useCounts()
+        console.log(appointments)
+
+        useEffect(()=>{
+
+          let totalPrice = appointments?.reduce(function (accumulator, item) {
+            return accumulator + item.price;
+
+          }, 0);
+
+          console.log(totalPrice)
+
+        },[appointments])
  
     return (
       <>

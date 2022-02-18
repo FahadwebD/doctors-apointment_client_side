@@ -7,7 +7,7 @@ const useBlogs=()=>{
    const {user} = useAuth()
 
     useEffect(() => {
-        const url = `http://localhost:5000/my/blogs/${user.email}`
+        const url = `http://localhost:5000/blogs/${user.email}`
         fetch(url)
             .then(res => res.json())
             .then(data => setBlogs(data));
