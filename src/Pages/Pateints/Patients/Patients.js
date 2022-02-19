@@ -54,6 +54,7 @@ const Patients = () => {
   const [info , setInfo] = useState()
   const handleClose = () => setOpen(false);
     const [orders , setOrders] = useState([])
+    const [newPatients , setNewPatients] = useState([])
     const {user} = useAuth()
     useEffect(()=>{
         const url =`https://floating-cliffs-15059.herokuapp.com/appointments/${user.email}`
@@ -78,6 +79,33 @@ const Patients = () => {
     const handleChangeMedicine = (event) => {
       setMedicine(event.target.value);
     };
+
+
+ const [check , setCheck] = useState([])
+
+    useEffect(()=>{
+  
+
+      fetch('http://localhost:5000/prescriptions')
+      .then(res => res.json())
+      .then(data => setCheck(data))
+
+    
+     
+      const res2 = orders.filter((page1) => !check.some(page2 => page1._id === page2.uqId ))
+      setNewPatients(res2)
+
+
+
+  },[orders , check])
+
+
+   
+
+
+
+
+
 
 
 console.log(info)
@@ -129,7 +157,7 @@ console.log(info)
           </TableRow>
         </TableHead>
         <TableBody>
-          {orders.map((row) => (
+          {newPatients?.map((row) => (
             <StyledTableRow key={row.name}>
               <StyledTableCell component="th" scope="row">
                 {row.patientName}
