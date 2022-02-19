@@ -12,7 +12,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import useAuth from '../../../hooks/useAuth';
-import PrescriptionModal from '../PrescriptionModal/PrescriptionModal';
+
 import { TextField } from '@mui/material';
 
 
@@ -90,11 +90,12 @@ console.log(info)
           doctor : info.selectedDoctor,
           service : info.serviceName,
           medicine,
-          test
+          test,
+          uqId :info._id
       }
       console.log(writePrescription)
       // send to the server
-      fetch('http://localhost:5000/prescriptions', {
+      fetch('https://floating-cliffs-15059.herokuapp.com/prescriptions', {
           method: 'POST',
           headers: {
               'content-type': 'application/json'
@@ -104,7 +105,7 @@ console.log(info)
           .then(res => res.json())
           .then(data => {
               if (data.insertedId) {
-                console.log('success')
+                alert('prescription added')
               }
           });
 
