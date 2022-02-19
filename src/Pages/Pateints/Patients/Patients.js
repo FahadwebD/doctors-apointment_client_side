@@ -86,7 +86,7 @@ const Patients = () => {
     useEffect(()=>{
   
 
-      fetch('http://localhost:5000/prescriptions')
+      fetch('https://floating-cliffs-15059.herokuapp.com/prescriptions')
       .then(res => res.json())
       .then(data => setCheck(data))
 
