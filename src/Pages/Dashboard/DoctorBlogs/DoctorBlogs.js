@@ -5,6 +5,7 @@ import Rating from '@mui/material/Rating';
 import { Button, Input } from '@mui/material';
 import useAuth from '../../../hooks/useAuth';
 import useBlogs from '../../../hooks/useBlogs';
+import DoctorBlogsManagement from '../DoctorBlogsManagement/DoctorBlogsManagement';
 
 
 
@@ -70,6 +71,7 @@ const DoctorBlogs = () => {
    
   
     return (
+      <>
         <div>
              <Box>
          <div>
@@ -103,6 +105,10 @@ const DoctorBlogs = () => {
            </Box>
            {success && <p style={{ color: 'green' }}>{success}</p>}
         </div>
+        <div>
+            <DoctorBlogsManagement></DoctorBlogsManagement>
+        </div>
+      </>
     );
 };
 

@@ -15,7 +15,8 @@ const useBlogs=()=>{
 
 
     return{
-        blogs
+        blogs,
+        setBlogs
     }
 }
 

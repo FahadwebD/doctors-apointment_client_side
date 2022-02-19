@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import useAuth from '../../../hooks/useAuth';
 import PrescriptionModal from '../PrescriptionModal/PrescriptionModal';
+import { TextField } from '@mui/material';
 
 
 const style = {
@@ -50,7 +51,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 const Patients = () => {
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const [info , setInfo] = useState()
   const handleClose = () => setOpen(false);
     const [orders , setOrders] = useState([])
     const {user} = useAuth()
@@ -61,6 +62,57 @@ const Patients = () => {
         .then(data => setOrders(data))
     },[user])
     console.log(orders)
+
+    const handleOpen = (info) =>{
+     setInfo(info)
+      setOpen(true);
+     
+    } 
+
+    const [test, setTest] = React.useState('Controlled');
+    const [medicine, setMedicine] = React.useState('Controlled');
+
+    const handleChangeTest = (event) => {
+      setTest(event.target.value);
+    };
+    const handleChangeMedicine = (event) => {
+      setMedicine(event.target.value);
+    };
+
+
+console.log(info)
+
+    const handleReportSubmit = e => {
+      // collect data
+      const writePrescription = {
+          patientName : info.patientName,
+          patienEmail: info.email,
+          doctor : info.selectedDoctor,
+          service : info.serviceName,
+          medicine,
+          test
+      }
+      console.log(writePrescription)
+      // send to the server
+      fetch('http://localhost:5000/prescriptions', {
+          method: 'POST',
+          headers: {
+              'content-type': 'application/json'
+          },
+          body: JSON.stringify(writePrescription)
+      })
+          .then(res => res.json())
+          .then(data => {
+              if (data.insertedId) {
+                console.log('success')
+              }
+          });
+
+      e.preventDefault();
+  }
+
+
+
     return (
         <>
         <div>
@@ -83,7 +135,7 @@ const Patients = () => {
               </StyledTableCell>
               <StyledTableCell align="right">{row.serviceName}</StyledTableCell>
               
-              <StyledTableCell align="right"><Button onClick={handleOpen}>Open modal</Button></StyledTableCell>
+              <StyledTableCell align="right"><Button onClick={()=>handleOpen(row)}>Open modal</Button></StyledTableCell>
              
             </StyledTableRow>
           ))}
@@ -100,13 +152,28 @@ const Patients = () => {
         aria-describedby="keep-mounted-modal-description"
       >
         <Box sx={style}>
-          <Typography id="keep-mounted-modal-title" variant="h6" component="h2">
-            
-          </Typography>
-          <Typography id="keep-mounted-modal-description" sx={{ mt: 2 }}>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-          </Typography>
+        <TextField
+          id="standard-multiline-flexible"
+          label="Multiline"
+          multiline
+          maxRows={4}
+          value={test}
+          onChange={handleChangeTest}
+          variant="standard"
+        />
+              <TextField
+          id="standard-multiline-flexible"
+          label="Multiline"
+          multiline
+          maxRows={4}
+          value={medicine}
+          onChange={handleChangeMedicine}
+          variant="standard"
+        />
+        <Button onClick={handleReportSubmit}>Send</Button>
         </Box>
+
+        
       </Modal>
      
         </div>
