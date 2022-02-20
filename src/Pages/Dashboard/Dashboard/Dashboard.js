@@ -45,6 +45,7 @@ import MedicationIcon from '@mui/icons-material/Medication';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import LogoutIcon from '@mui/icons-material/Logout';
+import HomeIcon from '@mui/icons-material/Home';
 const drawerWidth = 250;
 
 
@@ -63,7 +64,8 @@ function Dashboard(props) {
     const drawer = (
         <div style={{backgroundColor:'#5CE7ED' , height:'100%'}}>
             <Toolbar />
-       
+            <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <HomeIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to='/'><Button color="inherit">Home </Button></Link></div>
+          
             
             {doctor && <Box>
                 <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><LineStyleIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}`}><Button color="inherit">Dashboard</Button></Link></div>
