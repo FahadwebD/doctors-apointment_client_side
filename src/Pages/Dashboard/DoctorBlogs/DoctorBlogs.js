@@ -109,9 +109,7 @@ const DoctorBlogs = () => {
            </Box>
            {success && <p style={{ color: 'green' }}>{success}</p>}
         </div>
-        <div>
-            <DoctorBlogsManagement></DoctorBlogsManagement>
-        </div>
+        
       </>
     );
 };

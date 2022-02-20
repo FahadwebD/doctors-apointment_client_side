@@ -48,6 +48,8 @@ import LogoutIcon from '@mui/icons-material/Logout';
 import HomeIcon from '@mui/icons-material/Home';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
+import NoteAltIcon from '@mui/icons-material/NoteAlt';
+import DoctorBlogsManagement from '../DoctorBlogsManagement/DoctorBlogsManagement';
 const drawerWidth = 250;
 
 
@@ -81,32 +83,35 @@ function Dashboard(props) {
     const drawer = (
         <div style={{backgroundColor:'#5CE7ED' , height:'100%'}}>
             <Toolbar />
-            <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <HomeIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to='/'><Button color="inherit">Home </Button></Link></div>
+            <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}> <HomeIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to='/'><Button color="inherit">Home </Button></Link></div>
           
             
            
             
             {admin ? <Box>
-                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><LineStyleIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}`}><Button color="inherit">Dashboard</Button></Link></div>
-                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><CalendarTodayIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}}  to={`${url}/appointments`}><Button color="inherit">Appointment Management</Button></Link></div>
-                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AdminPanelSettingsIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/makeAdmin`}><Button color="inherit">Admin Management</Button></Link> </div>
-                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <MedicationIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/addDoctor`}><Button color="inherit">Doctor Management</Button></Link></div>
-                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AssignmentIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/blogsManage`}><Button color="inherit">Blogs Management</Button></Link></div>
-                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AssignmentIndIcon   style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/patientsManage`}><Button color="inherit">Patients Management</Button></Link></div>
-                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AccountBalanceIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/incomeManage`}><Button color="inherit">Income MAnagement </Button></Link></div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}><LineStyleIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}`}><Button color="inherit">Dashboard</Button></Link></div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}><CalendarTodayIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}}  to={`${url}/appointments`}><Button color="inherit">Appointments Manage</Button></Link></div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}> <AdminPanelSettingsIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/makeAdmin`}><Button color="inherit">Admin Management</Button></Link> </div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}> <MedicationIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/addDoctor`}><Button color="inherit">Doctor Management</Button></Link></div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}> <AssignmentIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/blogsManage`}><Button color="inherit">Blogs Management</Button></Link></div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}> <AssignmentIndIcon   style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/patientsManage`}><Button color="inherit">Patients Management</Button></Link></div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}> <AccountBalanceIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/incomeManage`}><Button color="inherit">Income MAnagement </Button></Link></div>
                 
             </Box>: <Box>
                
             
-            <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><PersonSearchIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/patients`}><Button color="inherit">My Patients</Button></Link></div>
-            <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><HistoryEduIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/writeBlogs`}><Button color="inherit">Write Blogs</Button></Link></div>
+            <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}><PersonSearchIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/patients`}><Button color="inherit">My Patients</Button></Link></div>
+            <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}><HistoryEduIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/writeBlogs`}><Button color="inherit">Write Blogs</Button></Link></div>
+            <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}><NoteAltIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/myBlogs`}><Button color="inherit">Blogs Management</Button></Link></div>
                 
                 
                 </Box>}
             
+        <div style={{display:'flex' , alignItems:'center' ,position: 'absolute',
+                bottom: '10px',left:'10px'}}> <LogoutIcon  style={{color:'white' , fontWeight:'bolder'}}/><Button color="inherit" style={{color:'white'}} onClick={logout} >Log Out</Button></div>
                
                     
-                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px' , marginTop:'300px'}}> <LogoutIcon  style={{color:'white' , fontWeight:'bolder'}}/><Button color="inherit" style={{color:'white'}} onClick={logout} >Log Out</Button></div>
+                
                         
                     
                     
@@ -194,6 +199,9 @@ function Dashboard(props) {
                     </DoctorRoute>
                     <DoctorRoute path={`${path}/writeBlogs`}>
                         <DoctorBlogs></DoctorBlogs>
+                    </DoctorRoute>
+                    <DoctorRoute path={`${path}/myBlogs`}>
+                        <DoctorBlogsManagement></DoctorBlogsManagement>
                     </DoctorRoute>
                     <Route path={`${path}/payment/:appointmentId`}>
                         <Payment></Payment>

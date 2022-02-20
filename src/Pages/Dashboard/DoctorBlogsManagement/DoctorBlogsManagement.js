@@ -125,7 +125,9 @@ export default function DoctorBlogsManagement() {
 
 
   return (
-    <TableContainer component={Paper}>
+   <>
+   <h2>My Blogs</h2>
+   <TableContainer component={Paper}>
       <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
         <TableBody>
           {(rowsPerPage > 0
@@ -146,7 +148,7 @@ export default function DoctorBlogsManagement() {
                 {row.publishiDate}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
-                <Button  onClick={()=>handleBlogDelete(row._id)} style={{backgroundColor:'red'}}>Delete</Button>
+                <Button  onClick={()=>handleBlogDelete(row._id)} style={{backgroundColor:'red' , color:'white'}}>Delete</Button>
               </TableCell>
             </TableRow>
           ))}
@@ -179,5 +181,6 @@ export default function DoctorBlogsManagement() {
         </TableFooter>
       </Table>
     </TableContainer>
+   </>
   );
 }

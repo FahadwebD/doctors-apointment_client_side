@@ -18,6 +18,7 @@ import MoreIcon from '@mui/icons-material/MoreVert';
 import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import DashboardCustomizeRoundedIcon from '@mui/icons-material/DashboardCustomizeRounded';
+import LoginIcon from '@mui/icons-material/Login';
 import Avatar from '@mui/material/Avatar';
 import { Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -260,7 +261,7 @@ const Navigation = () => {
             >
               {user?.photoURL?<Avatar alt="doctors" src={user?.photoURL} />:<AccountCircle/>}
             </IconButton>
-          </Box>:<Link to='/login'> Login</Link>
+          </Box>: <Link style={{color:'white' , textDecoration:'none'}} to='/login'>  <LoginIcon></LoginIcon></Link>
         }
          {user?.email? <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton

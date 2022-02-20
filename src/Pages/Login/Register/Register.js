@@ -65,11 +65,11 @@ const Register = () => {
                             onBlur={handleOnBlur}
                             variant="standard" />
 
-                        <Button sx={{ width: '75%', m: 1 }} type="submit" variant="contained">Register</Button>
+                        <Button style={{ backgroundColor: '#5CE7ED' , color:'white'}} sx={{ width: '75%', m: 1 }} type="submit" variant="contained">Register</Button>
                         <NavLink
                             style={{ textDecoration: 'none' }}
                             to="/login">
-                            <Button variant="text">Already Registered? Please Login</Button>
+                            <Button style={{ backgroundColor: '#5CE7ED' , color:'white'}} variant="text">Already Registered? Please Login</Button>
                         </NavLink>
                     </form>}
                     {isLoading && <CircularProgress />}
