@@ -16,7 +16,7 @@ import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LastPageIcon from '@mui/icons-material/LastPage';
 import useBlogs from '../../../hooks/useBlogs'
-import { Button } from '@mui/material';
+import { Avatar, Button } from '@mui/material';
 
 
 
@@ -133,11 +133,14 @@ export default function DoctorBlogsManagement() {
             : blogs
           ).map((row) => (
             <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.head}
+              <TableCell style={{ width: 160 }}>
+              <img
+                style={{ width: '100px', height: '100px' }}
+                src={`data:image/png;base64,${row.image}`} alt="" />
+                
               </TableCell>
-              <TableCell style={{ width: 160 }} align="right">
-                {row.blogs}
+              <TableCell style={{ width: 660 }} align="right">
+              {row.head}
               </TableCell>
               <TableCell style={{ width: 160 }} align="right">
                 {row.publishiDate}

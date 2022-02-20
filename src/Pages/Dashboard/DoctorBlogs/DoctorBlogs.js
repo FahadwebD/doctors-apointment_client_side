@@ -78,30 +78,34 @@ const DoctorBlogs = () => {
         
        
          </div>
-         <TextField
-          id="outlined-multiline-flexible"
-          label="Multiline"
-          multiline
-          maxRows={4}
-          value={heading}
-          
-          onChange={handleHeading}
-        />
-           <TextField
-          id="outlined-multiline-flexible"
-          label="Multiline"
-          multiline
-          maxRows={4}
-          value={value}
-          
-          onChange={handleChange}
-        />
          <Input
                     accept="image/*"
                     type="file"
                     onChange={e => setImage(e.target.files[0])}
+          sx={{width:'1000px' , marginTop:'20px'}}
+
                 />
-        <Button onClick={addBlogs}>Add Your Feed Back</Button>
+         <TextField
+          id="outlined-multiline-flexible"
+          label="Heading"
+          multiline
+          maxRows={100}
+          value={heading}
+          
+          onChange={handleHeading}
+          sx={{width:'1000px' , marginTop:'20px'}}
+        />
+           <TextField
+          id="outlined-multiline-flexible"
+          label="Blogs"
+          multiline
+          maxRows={1000}
+          value={value}
+          sx={{width:'1000px' , marginTop:'20px'}}
+          onChange={handleChange}
+        />
+         
+        <Button style={{backgroundColor:'#5CE7ED' , color:'white' , marginTop:'20px'}} onClick={addBlogs}>Add Your Blogs</Button>
            </Box>
            {success && <p style={{ color: 'green' }}>{success}</p>}
         </div>

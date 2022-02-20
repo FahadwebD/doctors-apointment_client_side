@@ -70,8 +70,8 @@ const Patients = () => {
      
     } 
 
-    const [test, setTest] = React.useState('Controlled');
-    const [medicine, setMedicine] = React.useState('Controlled');
+    const [test, setTest] = React.useState('');
+    const [medicine, setMedicine] = React.useState('');
 
     const handleChangeTest = (event) => {
       setTest(event.target.value);
@@ -164,7 +164,7 @@ console.log(info)
               </StyledTableCell>
               <StyledTableCell align="right">{row.serviceName}</StyledTableCell>
               
-              <StyledTableCell align="right"><Button onClick={()=>handleOpen(row)}>Open modal</Button></StyledTableCell>
+              <StyledTableCell align="right"><Button style={{backgroundColor:'#5CE7ED' , color:'white'}} onClick={()=>handleOpen(row)}>Write Prescription</Button></StyledTableCell>
              
             </StyledTableRow>
           ))}
@@ -183,23 +183,25 @@ console.log(info)
         <Box sx={style}>
         <TextField
           id="standard-multiline-flexible"
-          label="Multiline"
+          label="Test"
           multiline
-          maxRows={4}
+          maxRows={5}
           value={test}
           onChange={handleChangeTest}
           variant="standard"
+          sx={{width:'320px'}}
         />
               <TextField
           id="standard-multiline-flexible"
-          label="Multiline"
+          label="Medicine"
           multiline
-          maxRows={4}
+          maxRows={10}
           value={medicine}
           onChange={handleChangeMedicine}
           variant="standard"
+          sx={{width:'320px' }}
         />
-        <Button onClick={handleReportSubmit}>Send</Button>
+        <Button style={{backgroundColor:'#5CE7ED' , color:'white' , marginTop:'5px'}} onClick={handleReportSubmit}>Send</Button>
         </Box>
 
         
