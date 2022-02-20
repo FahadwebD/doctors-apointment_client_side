@@ -44,6 +44,7 @@ import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import MedicationIcon from '@mui/icons-material/Medication';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import LogoutIcon from '@mui/icons-material/Logout';
 const drawerWidth = 250;
 
 
@@ -52,7 +53,7 @@ function Dashboard(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     let { path, url } = useRouteMatch();
-    const { admin , doctor } = useAuth();
+    const { admin , doctor , logout } = useAuth();
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
@@ -74,7 +75,7 @@ function Dashboard(props) {
                 </Box>}
             
             {admin && <Box>
-                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AdminPanelSettingsIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link> </div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AdminPanelSettingsIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/makeAdmin`}><Button color="inherit">Admin Management</Button></Link> </div>
                 <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <MedicationIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/addDoctor`}><Button color="inherit">Doctor Management</Button></Link></div>
                 <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AssignmentIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/blogsManage`}><Button color="inherit">Blogs Management</Button></Link></div>
                 <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AssignmentIndIcon   style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/patientsManage`}><Button color="inherit">Patients Management</Button></Link></div>
@@ -84,7 +85,10 @@ function Dashboard(props) {
             
                
                     
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px' , marginTop:'300px'}}> <LogoutIcon  style={{color:'white' , fontWeight:'bolder'}}/><Button color="inherit" style={{color:'white'}} onClick={logout} >Log Out</Button></div>
                         
+                    
+                    
                             
                       
            
@@ -116,7 +120,7 @@ function Dashboard(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography sx={{color:'black'}} variant="h6" noWrap component="div">
-                        Appointments
+                        Dashboard
                     </Typography>
                 </Toolbar>
             </AppBar>

@@ -42,10 +42,11 @@ const MakeDoctor = () => {
                     variant="standard" />
                     <br/>
                 <Button type="submit" variant="contained" style={{ backgroundColor: '#5CE7ED' , width:'150px', marginTop:'20px'}}>Doctor Role</Button>
+                
             </form>
             {success && <Alert severity="success">Made Doctor successfully!</Alert>}
 
-            
+            <em style={{color:'red' , }}>*Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo, at.*</em>
         </div>
     );
 };
