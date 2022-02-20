@@ -36,6 +36,14 @@ import Patients from '../../Pateints/Patients/Patients';
 import MainDashboard from '../MainDashboard/MainDashboard';
 import DoctorRoute from '../../Login/DoctorRoute/DoctorRoute';
 import DoctorBlogs from '../DoctorBlogs/DoctorBlogs';
+import AllBlogsManage from '../AllBlogsManage/AllBlogsManage';
+import AllPatientsList from '../AllPatientsList/AllPatientsList';
+import TotalIncome from '../TotalIncome/TotalIncome';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import MedicationIcon from '@mui/icons-material/Medication';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 const drawerWidth = 250;
 
 
@@ -66,8 +74,11 @@ function Dashboard(props) {
                 </Box>}
             
             {admin && <Box>
-                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <PeopleAltIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link> </div>
-                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <PeopleAltIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/addDoctor`}><Button color="inherit">Add Doctor</Button></Link></div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AdminPanelSettingsIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/makeAdmin`}><Button color="inherit">Make Admin</Button></Link> </div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <MedicationIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/addDoctor`}><Button color="inherit">Doctor Management</Button></Link></div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AssignmentIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/blogsManage`}><Button color="inherit">Blogs Management</Button></Link></div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AssignmentIndIcon   style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/patientsManage`}><Button color="inherit">Patients Management</Button></Link></div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AccountBalanceIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/incomeManage`}><Button color="inherit">Income MAnagement </Button></Link></div>
                 
             </Box>}
             
@@ -168,6 +179,15 @@ function Dashboard(props) {
                    
                     <AdminRoute path={`${path}/addDoctor`}>
                         <AddDoctor></AddDoctor>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/blogsManage`}>
+                        <AllBlogsManage></AllBlogsManage>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/patientsManage`}>
+                        <AllPatientsList></AllPatientsList>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/incomeManage`}>
+                        <TotalIncome></TotalIncome>
                     </AdminRoute>
                 </Switch>
 

@@ -47,7 +47,7 @@ const DoctorsList = () => {
             <TableCell>Name</TableCell>
             
             <TableCell align="right">Email</TableCell>
-           
+            <TableCell align="right">Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -62,7 +62,7 @@ const DoctorsList = () => {
               <TableCell align="right">{row.email}</TableCell>
               
               
-              <TableCell align="right"><Button onClick={()=>handleProductDelete(row._id)}>Delete </Button></TableCell>
+              <TableCell align="right"><Button  style={{backgroundColor:'red' , color:'white'}} onClick={()=>handleProductDelete(row._id)}>Delete </Button></TableCell>
             </TableRow>
           ))}
         </TableBody>

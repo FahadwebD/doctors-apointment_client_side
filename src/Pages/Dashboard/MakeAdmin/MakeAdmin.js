@@ -40,7 +40,7 @@ const MakeAdmin = () => {
                     type="email"
                     onBlur={handleOnBlur}
                     variant="standard" />
-                <Button type="submit" variant="contained">Make Admin</Button>
+                <Button type="submit" variant="contained" style={{ backgroundColor: '#5CE7ED' }}>Make Admin</Button>
             </form>
             {success && <Alert severity="success">Made Admin successfully!</Alert>}
         </div>

@@ -38,17 +38,20 @@ const AddDoctor = () => {
     return (
         <>
         <div>
-            <h3>Add A Doctor</h3>
-            <form onSubmit={handleSubmit}>
+            
+            <div style={{display:'flex'}}>
+           <div style={{boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px'  ,width:'50%'}}>
+           <h3>Add A Doctor</h3>
+           <form onSubmit={handleSubmit}>
                 <TextField
-                    sx={{ width: '50%' }}
+                    sx={{ width: '75%' }}
                     label="Name"
                     required
                     onChange={e => setName(e.target.value)}
                     variant="standard" />
                 <br />
                 <TextField
-                    sx={{ width: '50%' }}
+                    sx={{ width: '75%' }}
                     label="Email"
                     type="email"
                     required
@@ -56,19 +59,27 @@ const AddDoctor = () => {
                     variant="standard" />
                 <br />
                 <Input
+                sx={{ width: '75%'  , marginTop:'10px'}}
                     accept="image/*"
                     type="file"
                     onChange={e => setImage(e.target.files[0])}
                 />
                 <br />
-                <Button variant="contained" type="submit">
+                <Button variant="contained" type="submit" style={{ backgroundColor: '#5CE7ED' , marginTop:'20px' }}>
                     Add Doctor
                 </Button>
             </form>
+           </div>
+           
             {success && <p style={{ color: 'green' }}>{success}</p>}
+           
+            <div  style={{width:'50%' , boxShadow: 'rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px' , marginLeft:'5px'}}>
+            <h3 >Add A Doctor</h3>
+                <MakeDoctor></MakeDoctor></div>
+            </div>
         </div>
         <div><DoctorsList></DoctorsList></div>
-        <div><MakeDoctor></MakeDoctor></div>
+        
         </>
     );
 };
