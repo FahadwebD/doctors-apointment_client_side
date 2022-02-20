@@ -123,13 +123,15 @@ export default function DashboardTable() {
   };
 
   return (
-    <Root sx={{ width: 500, maxWidth: '100%' }}>
+    <Root sx={{ width: 1100, maxWidth: '100%' }}>
       <table aria-label="custom pagination table">
         <thead>
           <tr>
-            <th>Dessert</th>
-            <th>Calories</th>
-            <th>Fat</th>
+            <th>Name</th>
+            <th>Service</th>
+            <th>Doctor</th>
+
+            <th>Date</th>
           </tr>
         </thead>
         <tbody>
@@ -140,8 +142,12 @@ export default function DashboardTable() {
             <tr key={row.email}>
               <td>{row.patientName}</td>
               <td style={{ width: 120 }} align="right">
-                {row.time}
+                {row.serviceName}
               </td>
+              <td style={{ width: 120 }} align="right">
+                {row.selectedDoctor}
+              </td>
+              
               <td style={{ width: 120 }} align="right">
                 {row.date}
               </td>
@@ -158,7 +164,7 @@ export default function DashboardTable() {
           <tr>
             <CustomTablePagination
               rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-              colSpan={3}
+              colSpan={4}
               count={todayAppointments?.length}
               rowsPerPage={rowsPerPage}
               page={page}

@@ -66,7 +66,25 @@ const Search = styled('div')(({ theme }) => ({
 const Navigation = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
- const {user , logout ,dashboardUse} = useAuth();
+ const {user , logout } = useAuth();
+ const [dashboardUse ,setDashboardUse] = React.useState(false)
+
+
+
+ React.useEffect(() => {
+  fetch(`https://floating-cliffs-15059.herokuapp.com/users/${user.email}`)
+      .then(res => res.json())
+      .then(data => {
+          if(data.hisRole === 'admin'){
+              
+              setDashboardUse(true)
+          }
+          else if(data.hisRole === 'doctor'){
+              
+              setDashboardUse(true)
+          }
+      })
+}, [user])
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -128,22 +146,22 @@ const Navigation = () => {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
+    {dashboardUse ?  <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           
             <DashboardCustomizeRoundedIcon />
           
         </IconButton>
-        <p>Give your valuable reviews</p>
-      </MenuItem>
-      <MenuItem>
+        <p>Dashboard</p>
+      </MenuItem>:  <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           
             <ReviewsIcon />
           
         </IconButton>
         <p>Give your valuable reviews</p>
-      </MenuItem>
+      </MenuItem>}
+    
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           
@@ -152,26 +170,8 @@ const Navigation = () => {
         </IconButton>
         <p>Dental Services</p>
       </MenuItem>
-      <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          size="large"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge badgeContent={17} color="error">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
+      
+   
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -182,7 +182,7 @@ const Navigation = () => {
         >
           {user?.photoURL?<Avatar alt="doctors" src={user?.photoURL} />:<AccountCircle/>}
         </IconButton>
-        <p>Profile</p>
+        <p>{user.displayName}</p>
       </MenuItem>
     </Menu>
   );
@@ -204,66 +204,45 @@ const Navigation = () => {
             variant="h6"
             noWrap
             component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
+           
           >
             Doctor Portal
           </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-          <Box sx={{ flexGrow: 1 }} />
+       
+          <Box sx={{ flexGrow: 2 }} />
 
-          {dashboardUse ?<div style={{marginTop:'10px'}}>
+      
+        {user?.email? <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+        {dashboardUse ?<div  style={{marginTop:'20px', marginRight:'15px'}} >
           <Tooltip title="Dashboard" arrow>
-         <Link to='/dashboard' style={{ textDecoration: 'none' , color:"inherit"}}>
-         <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
+         <Link  to='/dashboard' style={{ textDecoration: 'none' , color:"inherit"}}>
+        
             
-                <DashboardCustomizeRoundedIcon/>
+                Dashboard
                
-            </IconButton>
+          
          </Link>
             </Tooltip>
-            </div>:   <div style={{marginTop:'10px'}}>
+            </div>:   <div style={{marginTop:'20px', marginRight:'15px'}}>
             <Tooltip title="Give Us You Valuable Reviews" arrow>
          <Link to='/appointment' style={{ textDecoration: 'none' , color:"inherit"}}>
-         <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-              
-            >
+      
             
-                <ReviewsIcon/>
+                Review
                
-            </IconButton>
+          
          </Link>
             </Tooltip>
             </div>}
-        {user?.email? <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-     
             
-        <div style={{marginTop:'10px'}}>
+        <div style={{marginTop:'20px', marginRight:'15px'}}>
           <Tooltip title="Dental Services" arrow>
          <Link to='/appointment' style={{ textDecoration: 'none' , color:"inherit"}}>
-         <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
+        
             
-                <MedicalServicesIcon/>
+                Services
                
-            </IconButton>
+            
          </Link>
             </Tooltip>
             </div>

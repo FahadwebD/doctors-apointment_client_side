@@ -54,12 +54,27 @@ function Dashboard(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     let { path, url } = useRouteMatch();
-    const { admin , doctor , logout } = useAuth();
+    const { user , logout } = useAuth();
+    const [admin, setAdmin] = React.useState(false);
+    const [doctor, setDoctor] = React.useState(false);
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
     };
     
-
+    React.useEffect(() => {
+        fetch(`https://floating-cliffs-15059.herokuapp.com/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => {
+                if(data.hisRole === 'admin'){
+                    setAdmin(true)
+                    
+                }
+                else if(data.hisRole === 'doctor'){
+                    setDoctor(true)
+                    
+                }
+            })
+    }, [user.email])
    
     const drawer = (
         <div style={{backgroundColor:'#5CE7ED' , height:'100%'}}>
@@ -67,7 +82,16 @@ function Dashboard(props) {
             <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <HomeIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to='/'><Button color="inherit">Home </Button></Link></div>
           
             
-            {doctor && <Box>
+           
+            
+            {admin ? <Box>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AdminPanelSettingsIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/makeAdmin`}><Button color="inherit">Admin Management</Button></Link> </div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <MedicationIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/addDoctor`}><Button color="inherit">Doctor Management</Button></Link></div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AssignmentIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/blogsManage`}><Button color="inherit">Blogs Management</Button></Link></div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AssignmentIndIcon   style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/patientsManage`}><Button color="inherit">Patients Management</Button></Link></div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AccountBalanceIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/incomeManage`}><Button color="inherit">Income MAnagement </Button></Link></div>
+                
+            </Box>: <Box>
                 <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><LineStyleIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}`}><Button color="inherit">Dashboard</Button></Link></div>
             <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><CalendarTodayIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}}  to={`${url}/appointments`}><Button color="inherit">Appointment</Button></Link></div>
             <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}><PeopleAltIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/patients`}><Button color="inherit">Patients</Button></Link></div>
@@ -75,15 +99,6 @@ function Dashboard(props) {
                 
                 
                 </Box>}
-            
-            {admin && <Box>
-                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AdminPanelSettingsIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/makeAdmin`}><Button color="inherit">Admin Management</Button></Link> </div>
-                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <MedicationIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/addDoctor`}><Button color="inherit">Doctor Management</Button></Link></div>
-                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AssignmentIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/blogsManage`}><Button color="inherit">Blogs Management</Button></Link></div>
-                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AssignmentIndIcon   style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/patientsManage`}><Button color="inherit">Patients Management</Button></Link></div>
-                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'30px'}}> <AccountBalanceIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/incomeManage`}><Button color="inherit">Income MAnagement </Button></Link></div>
-                
-            </Box>}
             
                
                     

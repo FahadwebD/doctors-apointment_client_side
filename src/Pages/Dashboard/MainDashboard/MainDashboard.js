@@ -63,7 +63,11 @@ const MainDashboard = () => {
   </Grid>
 </Grid>
         </div>
-        <div><DashboardTable></DashboardTable></div>
+        
+        <div style={{marginTop:'50px'}}>
+        <h2>Today Appointments</h2>
+          
+          <DashboardTable></DashboardTable></div>
         </>
     );
 };
