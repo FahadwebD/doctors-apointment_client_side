@@ -24,7 +24,8 @@ const useBlogs=()=>{
     return{
         blogs,
         setBlogs,
-        allBlogs
+        allBlogs, 
+        setAllBlogs
     }
 }
 

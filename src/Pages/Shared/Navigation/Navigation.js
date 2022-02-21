@@ -76,17 +76,17 @@ const Navigation = () => {
   fetch(`https://floating-cliffs-15059.herokuapp.com/users/${user.email}`)
       .then(res => res.json())
       .then(data => {
-          if(data.hisRole === 'admin'){
+          if(data.hisRole){
               
               setDashboardUse(true)
           }
-          else if(data.hisRole === 'doctor'){
+          else {
               
-              setDashboardUse(true)
+              setDashboardUse(false)
           }
       })
-}, [user])
-
+}, [user.email])
+console.log(dashboardUse)
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 

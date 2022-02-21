@@ -28,10 +28,10 @@ import AddDoctor from '../AddDoctor/AddDoctor';
 import useAuth from './../../../hooks/useAuth';
 import AdminRoute from './../../Login/AdminRoute/AdminRoute';
 import Payment from '../Payment/Payment';
-import MakeDoctor from '../MakeDoctor/MakeDoctor';
+
 import LineStyleIcon from '@mui/icons-material/LineStyle';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
+
 import Patients from '../../Pateints/Patients/Patients';
 import MainDashboard from '../MainDashboard/MainDashboard';
 import DoctorRoute from '../../Login/DoctorRoute/DoctorRoute';
@@ -49,7 +49,11 @@ import HomeIcon from '@mui/icons-material/Home';
 import PersonSearchIcon from '@mui/icons-material/PersonSearch';
 import HistoryEduIcon from '@mui/icons-material/HistoryEdu';
 import NoteAltIcon from '@mui/icons-material/NoteAlt';
+import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
+import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import DoctorBlogsManagement from '../DoctorBlogsManagement/DoctorBlogsManagement';
+import ServicesManagement from '../ServicesManagement/ServicesManagement';
+import BillManage from '../BillManage/BillManage';
 const drawerWidth = 250;
 
 
@@ -95,6 +99,9 @@ function Dashboard(props) {
                 <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}> <MedicationIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/addDoctor`}><Button color="inherit">Doctor Management</Button></Link></div>
                 <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}> <AssignmentIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/blogsManage`}><Button color="inherit">Blogs Management</Button></Link></div>
                 <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}> <AssignmentIndIcon   style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/patientsManage`}><Button color="inherit">Patients Management</Button></Link></div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}> <HealthAndSafetyIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/servicesManage`}><Button color="inherit">Services MAnagement </Button></Link></div>
+                <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}> <AccountBalanceWalletIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/billManage`}><Button color="inherit">Bill MAnagement </Button></Link></div>
+                
                 <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}> <AccountBalanceIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/incomeManage`}><Button color="inherit">Income MAnagement </Button></Link></div>
                 
             </Box>: <Box>
@@ -210,6 +217,7 @@ function Dashboard(props) {
                         <MakeAdmin></MakeAdmin>
                     </AdminRoute>
                    
+                   
                     <AdminRoute path={`${path}/addDoctor`}>
                         <AddDoctor></AddDoctor>
                     </AdminRoute>
@@ -218,6 +226,12 @@ function Dashboard(props) {
                     </AdminRoute>
                     <AdminRoute path={`${path}/patientsManage`}>
                         <AllPatientsList></AllPatientsList>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/servicesManage`}>
+                        <ServicesManagement></ServicesManagement>
+                    </AdminRoute>
+                    <AdminRoute path={`${path}/billManage`}>
+                        <BillManage></BillManage>
                     </AdminRoute>
                     <AdminRoute path={`${path}/incomeManage`}>
                         <TotalIncome></TotalIncome>

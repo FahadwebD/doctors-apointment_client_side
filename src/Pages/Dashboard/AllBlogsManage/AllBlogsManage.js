@@ -9,21 +9,29 @@ import Paper from '@mui/material/Paper';
 import useBlogs from '../../../hooks/useBlogs';
 import { Button } from '@mui/material';
 
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
 export default function AllBlogsManage() {
-    const {allBlogs} = useBlogs()
+    const {allBlogs , setAllBlogs} = useBlogs()
     console.log(allBlogs)
+
+
+    const handleBlogDelete = (_id) =>{
+      console.log(_id)
+      const url=`https://floating-cliffs-15059.herokuapp.com/blogs/${_id}`
+      fetch(url, {
+        method:'DELETE'
+      })
+      .then(res => res.json())
+      .then(data=>{
+        if(data.deletedCount>0){
+         
+          alert('delete')
+       
+          const remaining = allBlogs?.filter(order => order._id !== _id)
+          
+         setAllBlogs(remaining)
+        }
+      })
+    }
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
@@ -48,7 +56,7 @@ export default function AllBlogsManage() {
               <TableCell align="right">{row.head}</TableCell>
               <TableCell align="right">{row.email}</TableCell>
               <TableCell align="right">{row.publishiDate}</TableCell>
-              <TableCell align="right"><Button>Delete</Button></TableCell>
+              <TableCell align="right"><Button onClick={()=>handleBlogDelete(row._id)}> Delete</Button></TableCell>
             </TableRow>
           ))}
         </TableBody>

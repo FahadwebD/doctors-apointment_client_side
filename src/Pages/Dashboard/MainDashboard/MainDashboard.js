@@ -6,6 +6,7 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import useCounts from '../../../hooks/useCounts';
 import DashboardTable from '../DashboardTable/DashboardTable';
+import Charts from '../Charts/Charts';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -63,6 +64,7 @@ const MainDashboard = () => {
   </Grid>
 </Grid>
         </div>
+        <div><Charts></Charts></div>
         
         <div style={{marginTop:'50px'}}>
         <h2>Today Appointments</h2>
