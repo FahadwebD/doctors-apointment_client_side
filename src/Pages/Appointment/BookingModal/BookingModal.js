@@ -9,6 +9,7 @@ import Button from '@mui/material/Button';
 import useAuth from '../../../hooks/useAuth';
 import useDoctors from '../../../hooks/useDoctors'
 import { MenuItem } from '@mui/material';
+import useCounts from '../../../hooks/useCounts';
 
 const style = {
     position: 'absolute',
@@ -47,7 +48,7 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
     const { user } = useAuth();
     const initialInfo = { patientName: user.displayName, email: user.email, phone: '' }
     const [bookingInfo, setBookingInfo] = useState(initialInfo);
-
+    const {todayAppointments} = useCounts()
 
     
 
@@ -110,7 +111,7 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
             }}
         >
             <Fade in={openBooking}>
-                <Box sx={style} style={{border:'none' , width:'600px' , padding:'20px' , borderRadius:'10px' ,margin:'20px'}}>
+               {todayAppointments?.length >= 5? <div><h1>Sorry No More Appointments Today</h1></div>: <Box sx={style} style={{border:'none' , width:'600px' , padding:'20px' , borderRadius:'10px' ,margin:'20px'}}>
                     <Typography style={{textAlign:"center" , color:'#5CE7ED'}} id="transition-modal-title" variant="h6" component="h2">
                         {name}
                     </Typography>
@@ -176,7 +177,7 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
                         <div style={{ textAlign:'right' , marginRight:'40px'}}><Button style={{backgroundColor:'#5CE7ED' }} type="submit" variant="contained">Send</Button></div>
                         
                     </form>
-                </Box>
+                </Box>}
             </Fade>
         </Modal>
     );

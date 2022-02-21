@@ -87,7 +87,11 @@ function Dashboard(props) {
     const drawer = (
         <div style={{backgroundColor:'#5CE7ED' , height:'100%'}}>
             <Toolbar />
-            <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}> <HomeIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to='/'><Button color="inherit">Home </Button></Link></div>
+            <div style={{display:'flex' , alignItems:'center' ,position: 'absolute',
+                top: '0px',left:'10px'}}><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to='/'><h1>Doctor Portal</h1></Link></div>
+            
+
+            <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px' , marginTop:'30px'}}> <HomeIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to='/'><Button color="inherit">Home </Button></Link></div>
           
             
            

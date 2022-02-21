@@ -9,8 +9,12 @@ const Bill = ({data}) => {
     const [result , setResult] = useState()
    
     useEffect(()=>{
+        let arr =[]
+        let obj ={}
         const result = appointments?.filter(a=> a.selectedDoctor === data.email)
         setResult(result)
+       arr.push(result)
+        console.log(arr)
         let totalPrice = result?.reduce(function (accumulator, item) {
             return accumulator + item.price;
     

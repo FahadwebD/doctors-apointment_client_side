@@ -35,9 +35,10 @@ const useCounts = ()=>{
 
     },[])
     useEffect(()=>{
+       
+        const date = new Date().toLocaleDateString();
 
-
-        fetch('https://floating-cliffs-15059.herokuapp.com/today/appointments')
+        fetch(`http://localhost:5000/today/appointments?date=${date}`)
         .then(res => res.json())
         .then(data => setTodayAppointments(data))
 
