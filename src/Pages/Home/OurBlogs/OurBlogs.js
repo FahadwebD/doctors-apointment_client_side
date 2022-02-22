@@ -16,7 +16,8 @@ const extraCardBg = {
 }
 
 const OurBlogs = () => {
-    const {blogs} = useBlogs()
+    const {allBlogs} = useBlogs()
+    console.log(allBlogs)
     return (
         <div style={{marginTop:'130px'}}>
             <h4>Our Blogs</h4>
@@ -40,7 +41,7 @@ const OurBlogs = () => {
 
                  </Card>
                 {
-                   blogs?.slice(-2).map(blog=> <OurBlog 
+                   allBlogs?.slice(-2).map(blog=> <OurBlog 
                    blog={blog}>
 
                    </OurBlog>)

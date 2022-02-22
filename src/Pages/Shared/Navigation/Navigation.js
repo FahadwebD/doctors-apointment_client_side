@@ -13,7 +13,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
+import ChromeReaderModeIcon from '@mui/icons-material/ChromeReaderMode';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
 import ReviewsIcon from '@mui/icons-material/Reviews';
@@ -190,7 +190,14 @@ console.log(dashboardUse)
         </IconButton>
         <p>Dental Services</p>
       </MenuItem>
-      
+      <MenuItem>
+        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+          
+            <ChromeReaderModeIcon />
+          
+        </IconButton>
+        <p>Blogs</p>
+      </MenuItem>
    
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -262,6 +269,17 @@ console.log(dashboardUse)
         
             
                 Services
+               
+            
+         </Link>
+            </Tooltip>
+            </div>
+            <div style={{marginTop:'20px', marginRight:'15px'}}>
+          <Tooltip title="Dental Services" arrow>
+         <Link to='/appointment' style={{ textDecoration: 'none' , color:"inherit"}}>
+        
+            
+                Blogs
                
             
          </Link>
