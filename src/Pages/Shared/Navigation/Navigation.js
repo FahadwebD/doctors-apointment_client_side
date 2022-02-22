@@ -23,6 +23,7 @@ import Avatar from '@mui/material/Avatar';
 import { Tooltip } from '@mui/material';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import useDoctors from '../../../hooks/useDoctors';
 const Search = styled('div')(({ theme }) => ({
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -68,9 +69,26 @@ const Navigation = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
  const {user , logout } = useAuth();
+ const {doctors} = useDoctors()
  const [dashboardUse ,setDashboardUse] = React.useState(false)
+  const [isDoctor , setIsDoctor] = React.useState(false)
+  const [image , setImage] = React.useState('')
+  const [doctorName , setDoctorName] = React.useState('')
+ React.useEffect(() => {
+  
+  const imageGet = doctors?.find(d=> d.email == user.email)
+  setImage(imageGet?.image)
+  setDoctorName(imageGet?.name)
+  console.log(imageGet?.image)
+  if(imageGet){
+    setIsDoctor(true)
+  }
+  else{
+    setIsDoctor(false)
+  }
 
-
+}, [user.email , doctors])
+console.log(isDoctor)
 
  React.useEffect(() => {
   fetch(`https://floating-cliffs-15059.herokuapp.com/users/${user.email}`)
@@ -181,9 +199,10 @@ console.log(dashboardUse)
           aria-haspopup="true"
           color="inherit"
         >
-          {user?.photoURL?<Avatar alt="doctors" src={user?.photoURL} />:<AccountCircle/>}
+          {isDoctor? <Avatar alt="doctors" src={`data:image/png;base64,${image}`}/>:<div>{user?.photoURL?<Avatar alt="doctors" src={user?.photoURL} />:<AccountCircle/>}</div>}
+          
         </IconButton>
-        <p>{user.displayName}</p>
+        <p style={{color:'black'}}>{user.displayName}</p>
       </MenuItem>
     </Menu>
   );
@@ -259,7 +278,8 @@ console.log(dashboardUse)
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              {user?.photoURL?<Avatar alt="doctors" src={user?.photoURL} />:<AccountCircle/>}
+              {isDoctor? <Avatar alt="doctors" src={`data:image/png;base64,${image}`}/>:<div>{user?.photoURL?<Avatar alt="doctors" src={user?.photoURL} />:<AccountCircle/>}</div>}
+              
             </IconButton>
           </Box>: <Link style={{color:'white' , textDecoration:'none'}} to='/login'>  <LoginIcon></LoginIcon></Link>
         }
