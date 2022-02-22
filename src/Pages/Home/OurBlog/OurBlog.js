@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
+import moment from 'moment';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -32,26 +33,27 @@ const ExpandMore = styled((props) => {
 const OurBlog = ({blog}) => {
     console.log(blog)
  
-    const {name , description} = blog;
-
-
+    const {name , description , photoUrl , publishiDate , head} = blog;
+ console.log(publishiDate)
+ const testing =moment(publishiDate).format('LL');
+ console.log(testing)
     return (
         <Card className='cardss'>
       <CardHeader
         avatar={
-          <Avatar alt="doctors" src={person} />
+          <Avatar alt="doctors" src={`data:image/png;base64,${photoUrl}`} />
         }
         action={
           <IconButton aria-label="settings">
             <MoreVertIcon />
           </IconButton>
         }
-        title="Doctor Caudi"
-        subheader="September 14, 2016"
+        title={name}
+        subheader={testing}
       />
       
       <CardContent>
-        <h2 id='headlineB' >Two Times of a brush in a day can keep you healthy</h2>
+        <h2 id='headlineB' >{head}</h2>
       
         <Typography variant="body2" color="text.secondary">
           This impressive paella is a perfect party dish and a fun meal to cook

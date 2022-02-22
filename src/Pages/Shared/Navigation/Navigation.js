@@ -74,6 +74,7 @@ const Navigation = () => {
   const [isDoctor , setIsDoctor] = React.useState(false)
   const [image , setImage] = React.useState('')
   const [doctorName , setDoctorName] = React.useState('')
+  
  React.useEffect(() => {
   
   const imageGet = doctors?.find(d=> d.email == user.email)
@@ -142,7 +143,7 @@ console.log(dashboardUse)
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+      <MenuItem onClick={handleMenuClose}>{isDoctor? `Dr . ${user.displayName}`:  `${user.displayName}`}</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
       <MenuItem onClick={logout}>Log Out</MenuItem>
     </Menu>
@@ -202,7 +203,7 @@ console.log(dashboardUse)
           {isDoctor? <Avatar alt="doctors" src={`data:image/png;base64,${image}`}/>:<div>{user?.photoURL?<Avatar alt="doctors" src={user?.photoURL} />:<AccountCircle/>}</div>}
           
         </IconButton>
-        <p style={{color:'black'}}>{user.displayName}</p>
+       {isDoctor? <p>Dr .{user.displayName}</p>:  <p>{user.displayName}</p>}
       </MenuItem>
     </Menu>
   );

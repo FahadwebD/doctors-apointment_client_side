@@ -2,35 +2,10 @@ import React from 'react';
 import OurBlog from '../OurBlog/OurBlog';
 import bg from '../../../images/extracard.jpg';
 import '../OurBlog/OurBlog.css'
+import useBlogs from '../../../hooks/useBlogs'
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import { Card } from '@mui/material';
-const blogs = [
-    {
-        name: 'Alex',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed culpa cumque enim! Voluptatibus aliquid expedita saepe accusantium itaque ducimus rem voluptas',
-        
-    },
-    {
-        name: 'Fahad',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed culpa cumque enim! Voluptatibus aliquid expedita saepe accusantium itaque ducimus rem voluptas',
-        
-    },
-    {
-        name: 'Nipen',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed culpa cumque enim! Voluptatibus aliquid expedita saepe accusantium itaque ducimus rem voluptas',
-        
-    },
-    {
-        name: 'Hope Js',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed culpa cumque enim! Voluptatibus aliquid expedita saepe accusantium itaque ducimus rem voluptas',
-        
-    },
-    {
-        name: 'Pilon mark',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed culpa cumque enim! Voluptatibus aliquid expedita saepe accusantium itaque ducimus rem voluptas',
-        
-    }
-]
+
 
 const extraCardBg = {
     background: `url(${bg})`,
@@ -41,6 +16,7 @@ const extraCardBg = {
 }
 
 const OurBlogs = () => {
+    const {blogs} = useBlogs()
     return (
         <div style={{marginTop:'130px'}}>
             <h4>Our Blogs</h4>
@@ -64,7 +40,7 @@ const OurBlogs = () => {
 
                  </Card>
                 {
-                   blogs.slice(0,2).map(blog=> <OurBlog 
+                   blogs?.slice(-2).map(blog=> <OurBlog 
                    blog={blog}>
 
                    </OurBlog>)

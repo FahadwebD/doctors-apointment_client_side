@@ -6,12 +6,14 @@ import { Button, Input } from '@mui/material';
 import useAuth from '../../../hooks/useAuth';
 import useBlogs from '../../../hooks/useBlogs';
 import DoctorBlogsManagement from '../DoctorBlogsManagement/DoctorBlogsManagement';
+import useDoctors from '../../../hooks/useDoctors';
 
 
 
 const DoctorBlogs = () => {
     const {user } = useAuth()
     const {blogs} = useBlogs()
+    const {doctors} = useDoctors()
     const [heading, setHeading] = React.useState('');
     const [value, setValue] = React.useState('');
     const [photoUrl , setPhotoUrl] = React.useState('')
@@ -25,17 +27,27 @@ const DoctorBlogs = () => {
     const handleChange = (event) => {
       setValue(event.target.value);
     };
+
+
+    React.useEffect(() => {
+  
+        const imageGet = doctors?.find(d=> d.email == user.email)
+        setPhotoUrl(imageGet?.image)
+       
+      
+      
+      }, [user.email , doctors])
    
-    React.useEffect(()=>{
+    // React.useEffect(()=>{
 
-        if(user.photoURL == null){
-            setPhotoUrl ('https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png')
-        }
-        else {
-            setPhotoUrl(user.photoURL)
-        }
+    //     if(user.photoURL == null){
+    //         setPhotoUrl ('https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png')
+    //     }
+    //     else {
+    //         setPhotoUrl(user.photoURL)
+    //     }
 
-    } , [user])
+    // } , [user])
     console.log(user)
     let today = new Date().toLocaleDateString()
     const addBlogs= ()=>{
