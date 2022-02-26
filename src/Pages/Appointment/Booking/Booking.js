@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import BookingModal from '../BookingModal/BookingModal';
 import useCounts from '../../../hooks/useCounts'
 
-const Booking = ({ booking, date, setBookingSuccess }) => {
+const Booking = ({ booking, date, setBookingSuccess ,handleAddToCart  }) => {
     const { name, time, space, price } = booking;
     const {todayAppointments} = useCounts()
  
@@ -26,10 +26,7 @@ const Booking = ({ booking, date, setBookingSuccess }) => {
     },[todayAppointments , name,result ,space])
 
 
-    // const immidiate = () =>{
-
-    //     // let m = [...l , pactise]
-    // }
+    
 
 
 
