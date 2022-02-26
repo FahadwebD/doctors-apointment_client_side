@@ -17,7 +17,7 @@ const extraCardBg = {
 
 const OurBlogs = () => {
     const {allBlogs} = useBlogs()
-    console.log(allBlogs)
+
     return (
         <div style={{marginTop:'130px'}}>
             <h4>Our Blogs</h4>

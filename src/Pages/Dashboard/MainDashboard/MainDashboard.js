@@ -20,7 +20,7 @@ const MainDashboard = () => {
     const {pendingAppointments , appointments,
         allPatients,
         todayAppointments} = useCounts()
-        console.log(appointments)
+       
 
         useEffect(()=>{
 
@@ -29,7 +29,7 @@ const MainDashboard = () => {
 
           }, 0);
 
-          console.log(totalPrice)
+         
 
         },[appointments])
  

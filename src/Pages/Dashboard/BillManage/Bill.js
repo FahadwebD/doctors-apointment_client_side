@@ -4,7 +4,7 @@ import useCounts from '../../../hooks/useCounts';
 
 const Bill = ({data}) => {
     const {appointments} = useCounts()
-    console.log(data)
+    
     const [total , setTotal] = useState()
     const [result , setResult] = useState()
    
@@ -14,14 +14,14 @@ const Bill = ({data}) => {
         const result = appointments?.filter(a=> a.selectedDoctor === data.email)
         setResult(result)
        arr.push(result)
-        console.log(arr)
+       
         let totalPrice = result?.reduce(function (accumulator, item) {
             return accumulator + item.price;
     
           }, 0);
           setTotal(totalPrice)
     },[appointments,data])
-    console.log(data)
+ 
     return (
         <div style={{display:'flex' , alignItems:'center' , justifyContent:'space-around' ,boxShadow: 'rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px', marginBottom:'10px'}}>
            

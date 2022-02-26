@@ -105,7 +105,7 @@ export default function DoctorBlogsManagement() {
 
 
   const handleBlogDelete = (_id) =>{
-    console.log(_id)
+    
     const url=`https://floating-cliffs-15059.herokuapp.com/blogs/${_id}`
     fetch(url, {
       method:'DELETE'

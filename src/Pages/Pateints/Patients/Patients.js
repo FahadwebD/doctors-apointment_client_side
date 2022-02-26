@@ -62,7 +62,7 @@ const Patients = () => {
         .then(res => res.json())
         .then(data => setOrders(data))
     },[user])
-    console.log(orders)
+    
 
     const handleOpen = (info) =>{
      setInfo(info)
@@ -108,7 +108,7 @@ const Patients = () => {
 
 
 
-console.log(info)
+
 
     const handleReportSubmit = e => {
       // collect data
@@ -121,7 +121,7 @@ console.log(info)
           test,
           uqId :info._id
       }
-      console.log(writePrescription)
+    
       // send to the server
       fetch('https://floating-cliffs-15059.herokuapp.com/prescriptions', {
           method: 'POST',

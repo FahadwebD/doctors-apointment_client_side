@@ -6,7 +6,7 @@ import './PatientsReview.css'
 import person from '../../../images/people-2.png'
 
 const PatientsReview = ({title , desc}) => {
-    console.log(title)
+   
     return (
         <div>
             <div className="cardReviews" style={{ padding:'20px'}}>

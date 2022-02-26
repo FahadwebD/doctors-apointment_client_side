@@ -72,7 +72,7 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
             date: date.toLocaleDateString(),
             status:'pending'
         }
-        console.log(appointment)
+       
         // send to the server
         fetch('https://floating-cliffs-15059.herokuapp.com/appointments', {
             method: 'POST',
@@ -94,8 +94,7 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
     const handleChange = (event) => {
         setDoctor(event.target.value);
       };
-   console.log(doctor)
-   console.log(doctors)
+ 
    
 
     return (
@@ -111,7 +110,7 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
             }}
         >
             <Fade in={openBooking}>
-               {todayAppointments?.length >= 5? <div><h1>Sorry No More Appointments Today</h1></div>: <Box sx={style} style={{border:'none' , width:'600px' , padding:'20px' , borderRadius:'10px' ,margin:'20px'}}>
+               {todayAppointments?.length >= 50? <div><h1>Sorry No More Appointments Today</h1></div>: <Box sx={style} style={{border:'none' , width:'600px' , padding:'20px' , borderRadius:'10px' ,margin:'20px'}}>
                     <Typography style={{textAlign:"center" , color:'#5CE7ED'}} id="transition-modal-title" variant="h6" component="h2">
                         {name}
                     </Typography>

@@ -18,7 +18,7 @@ const DoctorsList = () => {
 
 
     const handleProductDelete = (_id) =>{
-        console.log(_id)
+     
         const url=`https://floating-cliffs-15059.herokuapp.com/doctors/${_id}`
         fetch(url, {
           method:'DELETE'

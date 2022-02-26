@@ -74,13 +74,13 @@ const Navigation = () => {
   const [isDoctor , setIsDoctor] = React.useState(false)
   const [image , setImage] = React.useState('')
   const [doctorName , setDoctorName] = React.useState('')
-  
+ 
  React.useEffect(() => {
   
   const imageGet = doctors?.find(d=> d.email == user.email)
   setImage(imageGet?.image)
   setDoctorName(imageGet?.name)
-  console.log(imageGet?.image)
+ 
   if(imageGet){
     setIsDoctor(true)
   }
@@ -89,7 +89,7 @@ const Navigation = () => {
   }
 
 }, [user.email , doctors])
-console.log(isDoctor)
+
 
  React.useEffect(() => {
   fetch(`https://floating-cliffs-15059.herokuapp.com/users/${user.email}`)
@@ -105,7 +105,7 @@ console.log(isDoctor)
           }
       })
 }, [user.email])
-console.log(dashboardUse)
+
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -207,7 +207,7 @@ console.log(dashboardUse)
           aria-haspopup="true"
           color="inherit"
         >
-          {isDoctor? <Avatar alt="doctors" src={`data:image/png;base64,${image}`}/>:<div>{user?.photoURL?<Avatar alt="doctors" src={user?.photoURL} />:<AccountCircle/>}</div>}
+          {isDoctor? <Avatar alt="doctors" src={`data:image/png;base64,${image}`}/>:<div>{user?.photoURL?<Avatar alt="doctors" src={user.photoURL} />:<AccountCircle/>}</div>}
           
         </IconButton>
        {isDoctor? <p>Dr .{user.displayName}</p>:  <p>{user.displayName}</p>}
@@ -297,7 +297,7 @@ console.log(dashboardUse)
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              {isDoctor? <Avatar alt="doctors" src={`data:image/png;base64,${image}`}/>:<div>{user?.photoURL?<Avatar alt="doctors" src={user?.photoURL} />:<AccountCircle/>}</div>}
+              {isDoctor? <Avatar alt="doctors" src={`data:image/png;base64,${image}`}/>:<div>{user?.photoURL?<Avatar alt="asd" src={user.photoURL} />:<AccountCircle/>}</div>}
               
             </IconButton>
           </Box>: <Link style={{color:'white' , textDecoration:'none'}} to='/login'>  <LoginIcon></LoginIcon></Link>

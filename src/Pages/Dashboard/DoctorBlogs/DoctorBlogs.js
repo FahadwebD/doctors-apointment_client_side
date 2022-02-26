@@ -19,7 +19,7 @@ const DoctorBlogs = () => {
     const [photoUrl , setPhotoUrl] = React.useState('')
     const [success, setSuccess] = React.useState(false);
     const [image, setImage] = React.useState(null);
-    console.log(blogs)
+   
     const handleHeading = (event) => {
         setHeading(event.target.value);
       };
@@ -48,7 +48,7 @@ const DoctorBlogs = () => {
     //     }
 
     // } , [user])
-    console.log(user)
+   
     let today = new Date().toLocaleDateString()
     const addBlogs= ()=>{
         
@@ -73,7 +73,7 @@ const DoctorBlogs = () => {
             .then(data => {
                 if (data.insertedId) {
                     setSuccess('Blogs added successfully')
-                    console.log('blog added successfully')
+                  
                 }
             })
             .catch(error => {

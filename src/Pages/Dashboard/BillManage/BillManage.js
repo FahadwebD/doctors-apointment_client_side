@@ -13,7 +13,9 @@ const BillManage = () => {
     return (
         <div>
          
-            {doctors?.map(data=><Bill data={data}></Bill>)}
+            {doctors?.map(data=><Bill
+            key={data.email}
+            data={data}></Bill>)}
           
         </div>
     );

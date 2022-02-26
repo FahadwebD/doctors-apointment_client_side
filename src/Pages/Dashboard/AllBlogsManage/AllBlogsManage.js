@@ -11,11 +11,11 @@ import { Button } from '@mui/material';
 
 export default function AllBlogsManage() {
     const {allBlogs , setAllBlogs} = useBlogs()
-    console.log(allBlogs)
+   
 
 
     const handleBlogDelete = (_id) =>{
-      console.log(_id)
+     
       const url=`https://floating-cliffs-15059.herokuapp.com/blogs/${_id}`
       fetch(url, {
         method:'DELETE'
@@ -47,7 +47,7 @@ export default function AllBlogsManage() {
         <TableBody>
           {allBlogs?.map((row) => (
             <TableRow
-              key={row.name}
+              key={row._id}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">

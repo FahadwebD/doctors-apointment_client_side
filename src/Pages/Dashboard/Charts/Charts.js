@@ -23,8 +23,7 @@ const Item = styled(Paper)(({ theme }) => ({
 const Charts =() => {
     const {services} = useServices()
     const {allData , check} = useData()
-    console.log(allData)
-    console.log(check)
+    
   return (
     <>
 

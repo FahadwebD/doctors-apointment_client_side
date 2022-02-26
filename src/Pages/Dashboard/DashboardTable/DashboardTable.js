@@ -108,7 +108,7 @@ export default function DashboardTable() {
     const {todayAppointments} = useCounts()
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  console.log(todayAppointments)
+  
 
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =

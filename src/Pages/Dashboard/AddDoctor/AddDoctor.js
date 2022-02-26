@@ -18,7 +18,7 @@ const AddDoctor = () => {
         formData.append('name', name);
         formData.append('email', email);
         formData.append('image', image);
-      console.log(formData)
+
         fetch('https://floating-cliffs-15059.herokuapp.com/doctors', {
             method: 'POST',
             body: formData
@@ -27,7 +27,7 @@ const AddDoctor = () => {
             .then(data => {
                 if (data.insertedId) {
                     setSuccess('Doctor added successfully')
-                    console.log('doctor added successfully')
+                  
                 }
             })
             .catch(error => {

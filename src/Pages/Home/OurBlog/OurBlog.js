@@ -31,12 +31,12 @@ const ExpandMore = styled((props) => {
 
   
 const OurBlog = ({blog}) => {
-    console.log(blog)
+   
  
     const {name , description , photoUrl , publishiDate , head} = blog;
- console.log(publishiDate)
+
  const testing =moment(publishiDate).format('LL');
- console.log(testing)
+ 
     return (
         <Card className='cardss'>
       <CardHeader

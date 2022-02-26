@@ -1,15 +1,21 @@
 import { Grid } from '@mui/material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import BookingModal from '../BookingModal/BookingModal';
+import useCounts from '../../../hooks/useCounts'
 
 const Booking = ({ booking, date, setBookingSuccess }) => {
     const { name, time, space, price } = booking;
+ 
     const [openBooking, setBookingOpen] = React.useState(false);
+  
     const handleBookingOpen = () => setBookingOpen(true);
     const handleBookingClose = () => setBookingOpen(false);
+  
+
+
     return (
         <>
             <Grid item xs={12} sm={6} md={4}>

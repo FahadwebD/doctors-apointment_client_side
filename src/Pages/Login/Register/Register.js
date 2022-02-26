@@ -9,7 +9,7 @@ import { useHistory } from 'react-router-dom';
 const Register = () => {
     const [loginData, setLoginData] = useState({});
     const history = useHistory();
-    console.log(history)
+   
     const { user, registerUser, isLoading, authError } = useAuth();
 
     const handleOnBlur = e => {
