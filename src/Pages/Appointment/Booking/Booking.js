@@ -8,7 +8,34 @@ import useCounts from '../../../hooks/useCounts'
 
 const Booking = ({ booking, date, setBookingSuccess }) => {
     const { name, time, space, price } = booking;
+    const {todayAppointments} = useCounts()
  
+    const [result , setResult] = useState()
+    // const [pactice , setPractice] = useState(space)
+
+    useEffect(()=>{
+       
+        const result = todayAppointments?.filter(s=> s.serviceName === name)
+        // console.log(result)
+        
+        const getV = result?.length
+       
+        const total = space - getV
+        setResult(total )
+
+    },[todayAppointments , name,result ,space])
+
+
+    // const immidiate = () =>{
+
+    //     // let m = [...l , pactise]
+    // }
+
+
+
+
+
+
     const [openBooking, setBookingOpen] = React.useState(false);
   
     const handleBookingOpen = () => setBookingOpen(true);
@@ -30,9 +57,9 @@ const Booking = ({ booking, date, setBookingSuccess }) => {
                         Price ${price}
                     </Typography>
                     <Typography variant="caption" display="block" gutterBottom>
-                        {space} SPACES AVAILABLE
+                        {result} SPACES AVAILABLE
                     </Typography>
-                    <Button style={{backgroundColor:'#5CE7ED'}} onClick={handleBookingOpen} variant="contained">BOOK APPOINTMENT</Button>
+                    {result>0?<Button style={{backgroundColor:'#5CE7ED'}} onClick={handleBookingOpen} variant="contained">BOOK APPOINTMENT</Button>:''}
                 </Paper>
             </Grid>
             <BookingModal

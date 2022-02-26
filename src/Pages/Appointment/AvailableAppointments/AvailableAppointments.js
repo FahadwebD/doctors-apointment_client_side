@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import useCounts from '../../../hooks/useCounts';
 
 import useServices from '../../../hooks/useServices';
+import useSpace from '../../../hooks/useSpace';
 import Booking from '../Booking/Booking';
 
 
@@ -10,10 +11,30 @@ import Booking from '../Booking/Booking';
 const AvailableAppointments = ({ date }) => {
     const [bookingSuccess, setBookingSuccess] = useState(false);
     const {services} = useServices()
-  
-   const {todayAppoinments} = useCounts()
+    // const {arr , result} = useSpace()
+//    const {todayAppointments} = useCounts()
 
-   
+  
+
+
+
+
+//    useEffect(()=>{
+//        if(todayAppointments?.length && services?.length){
+//            const arr =[]
+//         for (const t of services){
+//             // console.log(t.serviceName)
+//             const result = todayAppointments?.filter(s => s.serviceName == t.name)
+//             console.log(result?.length)
+//             arr.push(result)
+//             console.log(arr)
+//         }
+//        }
+//    },[todayAppointments , services])
+
+
+
+
     return (
         <Container>
             <Typography variant="h4" sx={{ color: '#5CE7ED', mb: 3 }}>Available Appointments on {date.toDateString()}</Typography>
