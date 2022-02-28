@@ -18,6 +18,7 @@ import Payment from './Pages/Dashboard/Payment/Payment';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
 import AddDoctor from './Pages/Dashboard/AddDoctor/AddDoctor';
 import Blogs from './Pages/Blogs/Blogs/Blogs';
+import NotFound from './Pages/NotFound/NotFound';
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
             <Route path="/blogs">
               <Blogs />
             </Route>
+            
             <Route path="/home">
               <Home />
             </Route>
@@ -46,6 +48,9 @@ function App() {
             </Route>
             <Route exact path="/">
               <Home />
+            </Route>
+            <Route path="*">
+              <NotFound/>
             </Route>
           </Switch>
         </Router>
