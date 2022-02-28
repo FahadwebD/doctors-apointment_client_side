@@ -101,12 +101,12 @@ const useFirebase = () => {
     }, [user.email])
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://floating-cliffs-15059.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => setDashboardUse(data.isDash))
     }, [user.email])
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${user.email}`)
+        fetch(`https://floating-cliffs-15059.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
             .then(data => setNavUse(data.isNav))
     }, [user.email])
