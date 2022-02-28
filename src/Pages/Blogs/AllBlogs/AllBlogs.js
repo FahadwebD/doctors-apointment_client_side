@@ -17,7 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const AllBlogs = () => {
-    const {blogs} = useBlogs()
+    const {allBlogs} = useBlogs()
     return (
         <div>
             <Container>
@@ -26,12 +26,12 @@ const AllBlogs = () => {
          
         <Box gridColumn="span 8">
       
-          <Item>{blogs?.slice(-1).map(latest =><LatestBlogs latest={latest}></LatestBlogs>)}</Item>
-          <Item>{blogs?.map(latest =><TotalBlogs latest={latest}></TotalBlogs>)}</Item>
+          <Item>{allBlogs?.slice(-1).map(latest =><LatestBlogs latest={latest}></LatestBlogs>)}</Item>
+          <Item>{allBlogs?.map(latest =><TotalBlogs latest={latest}></TotalBlogs>)}</Item>
         </Box>
         <Box gridColumn="span 4">
             <div style={{backgroundColor:'gray'}}><h3 style={{color:'white'}}>Recent Post</h3></div>
-          <Item>{blogs?.map(latest =><RecentBlogs latest={latest}></RecentBlogs>)}</Item>
+          <Item>{allBlogs?.map(latest =><RecentBlogs latest={latest}></RecentBlogs>)}</Item>
           <div style={{backgroundColor:'gray'}}><h3 style={{color:'white'}}> Doctors</h3></div>
           <Item>xs=4</Item>
         </Box>
