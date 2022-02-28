@@ -4,6 +4,9 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import { Container } from '@mui/material';
 import LatestBlogs from './LatestBlogs';
+import useBlogs from '../../../hooks/useBlogs';
+import TotalBlogs from './TotalBlogs';
+import RecentBlogs from './RecentBlogs';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -14,6 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const AllBlogs = () => {
+    const {blogs} = useBlogs()
     return (
         <div>
             <Container>
@@ -22,20 +26,18 @@ const AllBlogs = () => {
          
         <Box gridColumn="span 8">
       
-          <Item><LatestBlogs></LatestBlogs></Item>
+          <Item>{blogs?.slice(-1).map(latest =><LatestBlogs latest={latest}></LatestBlogs>)}</Item>
+          <Item>{blogs?.map(latest =><TotalBlogs latest={latest}></TotalBlogs>)}</Item>
         </Box>
         <Box gridColumn="span 4">
             <div style={{backgroundColor:'gray'}}><h3 style={{color:'white'}}>Recent Post</h3></div>
+          <Item>{blogs?.map(latest =><RecentBlogs latest={latest}></RecentBlogs>)}</Item>
+          <div style={{backgroundColor:'gray'}}><h3 style={{color:'white'}}> Doctors</h3></div>
           <Item>xs=4</Item>
         </Box>
         
-        <Box gridColumn="span 8">
-          <Item>xs=8</Item>
-        </Box>
-        <Box gridColumn="span 4">
-            <div style={{backgroundColor:'gray'}}><h3 style={{color:'white'}}> Doctors</h3></div>
-          <Item>xs=4</Item>
-        </Box>
+        
+        
       </Box>
     </Box>
     </Container>

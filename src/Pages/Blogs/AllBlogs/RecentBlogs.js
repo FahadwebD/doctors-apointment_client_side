@@ -1,9 +1,10 @@
 import React from 'react';
 
-const RecentBlogs = () => {
+const RecentBlogs = ({latest}) => {
+    const {blogs , image , head , name ,publishiDate    } = latest
     return (
         <div>
-            <h1>Recents Blogs</h1>
+            <h3 style={{color:'blue' , margin:'0%'}}>✔ {head}</h3>
         </div>
     );
 };
