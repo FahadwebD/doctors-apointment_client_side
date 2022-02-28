@@ -17,6 +17,7 @@ import DashboardHome from './Pages/Dashboard/DashboardHome/DashboardHome';
 import Payment from './Pages/Dashboard/Payment/Payment';
 import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
 import AddDoctor from './Pages/Dashboard/AddDoctor/AddDoctor';
+import Blogs from './Pages/Blogs/Blogs/Blogs';
 
 
 function App() {
@@ -31,6 +32,9 @@ function App() {
             <PrivateRoute path="/dashboard">
               <Dashboard />
             </PrivateRoute>
+            <Route path="/blogs">
+              <Blogs />
+            </Route>
             <Route path="/home">
               <Home />
             </Route>

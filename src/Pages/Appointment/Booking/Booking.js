@@ -10,7 +10,7 @@ const Booking = ({ booking, date, setBookingSuccess ,handleAddToCart  }) => {
     const { name, time, space, price } = booking;
     const {todayAppointments} = useCounts()
  
-    const [result , setResult] = useState()
+    const [result , setResult] = useState(space)
     // const [pactice , setPractice] = useState(space)
 
     useEffect(()=>{

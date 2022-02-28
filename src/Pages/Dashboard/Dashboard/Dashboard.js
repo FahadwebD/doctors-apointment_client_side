@@ -62,7 +62,7 @@ function Dashboard(props) {
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     let { path, url } = useRouteMatch();
-    const { user , logout } = useAuth();
+    const { user , logout , dashboardUse} = useAuth();
     const [admin, setAdmin] = React.useState(false);
     const [doctor, setDoctor] = React.useState(false);
     const handleDrawerToggle = () => {
@@ -83,6 +83,7 @@ function Dashboard(props) {
                 }
             })
     }, [user.email])
+    console.log(dashboardUse)
    
     const drawer = (
         <div style={{backgroundColor:'#5CE7ED' , height:'100%'}}>
@@ -96,7 +97,7 @@ function Dashboard(props) {
             
            
             
-            {admin ? <Box>
+            {dashboardUse ? <Box>
                 <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}><LineStyleIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}`}><Button color="inherit">Dashboard</Button></Link></div>
                 <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}><CalendarTodayIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}}  to={`${url}/appointments`}><Button color="inherit">Appointments Manage</Button></Link></div>
                 <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}> <AdminPanelSettingsIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/makeAdmin`}><Button color="inherit">Admin Management</Button></Link> </div>

@@ -13,6 +13,7 @@ const useFirebase = () => {
     const [admin, setAdmin] = useState(false);
     const [doctor, setDoctor] = useState(false);
     const [dashboardUse ,setDashboardUse] = useState(false)
+    const [navUse , setNavUse] = useState(false)
     const {doctors} = useDoctors()
 
     const auth = getAuth();
@@ -90,15 +91,25 @@ const useFirebase = () => {
             .then(data => {
                 if(data.hisRole === 'admin'){
                     setAdmin(true)
-                    setDashboardUse(true)
+                    
                 }
                 else if(data.hisRole === 'doctor'){
                     setDoctor(true)
-                    setDashboardUse(true)
+                    
                 }
             })
     }, [user.email])
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setDashboardUse(data.isDash))
+    }, [user.email])
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setNavUse(data.isNav))
+    }, [user.email])
     const logout = () => {
         setIsLoading(true);
         signOut(auth).then(() => {
@@ -132,6 +143,7 @@ const useFirebase = () => {
         loginUser,
         signInWithGoogle,
         logout,
+        navUse
     }
 }
 

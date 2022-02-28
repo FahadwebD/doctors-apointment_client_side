@@ -68,9 +68,9 @@ const Search = styled('div')(({ theme }) => ({
 const Navigation = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
- const {user , logout } = useAuth();
+ const {user , logout , dashboardUse , navUse} = useAuth();
  const {doctors} = useDoctors()
- const [dashboardUse ,setDashboardUse] = React.useState(false)
+ 
   const [isDoctor , setIsDoctor] = React.useState(false)
   const [image , setImage] = React.useState('')
   const [doctorName , setDoctorName] = React.useState('')
@@ -91,20 +91,7 @@ const Navigation = () => {
 }, [user.email , doctors])
 
 
- React.useEffect(() => {
-  fetch(`https://floating-cliffs-15059.herokuapp.com/users/${user.email}`)
-      .then(res => res.json())
-      .then(data => {
-          if(data.hisRole){
-              
-              setDashboardUse(true)
-          }
-          else {
-              
-              setDashboardUse(false)
-          }
-      })
-}, [user.email])
+console.log(navUse)
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -166,7 +153,7 @@ const Navigation = () => {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-    {dashboardUse ?  <MenuItem>
+    {navUse ?  <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           
             <DashboardCustomizeRoundedIcon />
@@ -241,7 +228,7 @@ const Navigation = () => {
 
       
         {user?.email? <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-        {dashboardUse ?<div  style={{marginTop:'20px', marginRight:'15px'}} >
+        {navUse ?<div  style={{marginTop:'20px', marginRight:'15px'}} >
           <Tooltip title="Dashboard" arrow>
          <Link  to='/dashboard' style={{ textDecoration: 'none' , color:"inherit"}}>
         
@@ -276,7 +263,7 @@ const Navigation = () => {
             </div>
             <div style={{marginTop:'20px', marginRight:'15px'}}>
           <Tooltip title="Dental Services" arrow>
-         <Link to='/appointment' style={{ textDecoration: 'none' , color:"inherit"}}>
+         <Link to='/blogs' style={{ textDecoration: 'none' , color:"inherit"}}>
         
             
                 Blogs
