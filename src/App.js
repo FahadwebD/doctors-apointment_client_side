@@ -19,6 +19,7 @@ import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
 import AddDoctor from './Pages/Dashboard/AddDoctor/AddDoctor';
 import Blogs from './Pages/Blogs/Blogs/Blogs';
 import NotFound from './Pages/NotFound/NotFound';
+import BlogsDetail from './Pages/Blogs/BlogsDetail/BlogsDetail';
 
 
 function App() {
@@ -33,6 +34,9 @@ function App() {
             <PrivateRoute path="/dashboard">
               <Dashboard />
             </PrivateRoute>
+            <Route exact path="/blogDetails/:blogId">
+              <BlogsDetail></BlogsDetail>
+            </Route>
             <Route path="/blogs">
               <Blogs />
             </Route>

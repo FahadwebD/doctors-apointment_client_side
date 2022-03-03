@@ -70,12 +70,10 @@ const Patients = () => {
      
     } 
 
-    const [test, setTest] = React.useState('');
+
     const [medicine, setMedicine] = React.useState('');
 
-    const handleChangeTest = (event) => {
-      setTest(event.target.value);
-    };
+   
     const handleChangeMedicine = (event) => {
       setMedicine(event.target.value);
     };
@@ -108,17 +106,19 @@ const Patients = () => {
 
 
 
-
+  const date = new Date().toLocaleDateString();
 
     const handleReportSubmit = e => {
       // collect data
+     
       const writePrescription = {
           patientName : info.patientName,
           patienEmail: info.email,
           doctor : info.selectedDoctor,
+       
           service : info.serviceName,
           medicine,
-          test,
+          date ,
           uqId :info._id
       }
     
@@ -181,16 +181,7 @@ const Patients = () => {
         aria-describedby="keep-mounted-modal-description"
       >
         <Box sx={style}>
-        <TextField
-          id="standard-multiline-flexible"
-          label="Test"
-          multiline
-          maxRows={5}
-          value={test}
-          onChange={handleChangeTest}
-          variant="standard"
-          sx={{width:'320px'}}
-        />
+       
               <TextField
           id="standard-multiline-flexible"
           label="Medicine"

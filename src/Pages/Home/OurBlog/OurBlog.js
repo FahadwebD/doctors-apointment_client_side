@@ -16,6 +16,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import person from '../../../images/people-1.png'
+import { Link } from 'react-router-dom';
 
 
 const ExpandMore = styled((props) => {
@@ -33,12 +34,12 @@ const ExpandMore = styled((props) => {
 const OurBlog = ({blog}) => {
    
  
-    const {name , description , photoUrl , publishiDate , head} = blog;
-
+    const {name , description , photoUrl , publishiDate , head ,_id} = blog;
+    const url = `/blogDetails/${_id}`
  const testing =moment(publishiDate).format('LL');
  
     return (
-        <Card className='cardss'>
+      <Link style={{textDecoration:'none'}} to={url}> <Card className='cardss'>
       <CardHeader
         avatar={
           <Avatar alt="doctors" src={`data:image/png;base64,${photoUrl}`} />
@@ -72,6 +73,7 @@ const OurBlog = ({blog}) => {
     </div>
       
     </Card>
+    </Link>
   );
 };
 

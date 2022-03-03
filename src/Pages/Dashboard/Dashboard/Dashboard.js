@@ -54,6 +54,7 @@ import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import DoctorBlogsManagement from '../DoctorBlogsManagement/DoctorBlogsManagement';
 import ServicesManagement from '../ServicesManagement/ServicesManagement';
 import BillManage from '../BillManage/BillManage';
+import DoctorOldPatients from '../DoctorOldPatients/DoctorOldPatients';
 const drawerWidth = 250;
 
 
@@ -115,6 +116,7 @@ function Dashboard(props) {
             <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}><PersonSearchIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/patients`}><Button color="inherit">My Patients</Button></Link></div>
             <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}><HistoryEduIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/writeBlogs`}><Button color="inherit">Write Blogs</Button></Link></div>
             <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}><NoteAltIcon style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/myBlogs`}><Button color="inherit">Blogs Management</Button></Link></div>
+            <div style={{display:'flex' , alignItems:'center' ,marginLeft:'10px'}}><PersonSearchIcon  style={{color:'white' , fontWeight:'bolder'}}/><Link style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}} to={`${url}/oldPatients`}><Button color="inherit">Old Patients</Button></Link></div>
                 
                 
                 </Box>}
@@ -211,6 +213,9 @@ function Dashboard(props) {
                     </DoctorRoute>
                     <DoctorRoute path={`${path}/writeBlogs`}>
                         <DoctorBlogs></DoctorBlogs>
+                    </DoctorRoute>
+                    <DoctorRoute path={`${path}/oldPatients`}>
+                        <DoctorOldPatients></DoctorOldPatients>
                     </DoctorRoute>
                     <DoctorRoute path={`${path}/myBlogs`}>
                         <DoctorBlogsManagement></DoctorBlogsManagement>

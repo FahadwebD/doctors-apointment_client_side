@@ -17,15 +17,15 @@ const LatestBlogs = ({latest}) => {
           image={`data:image/png;base64,${image}`}
           alt="green iguana"
         />
-        <CardContent>
+        <CardContent style={{textAlign:'left'}}>
            
           <Typography gutterBottom variant="h5" component="div">
             {head}
           </Typography>
           <small>Posted On February By Doctor <span>Ahsan</span></small>
-          <Typography variant="body2" color="text.secondary">
+          <p  style={{ whiteSpace: 'pre-line'}}>
            {blogs}
-          </Typography>
+          </p>
         </CardContent>
       </CardActionArea>
     </Card>

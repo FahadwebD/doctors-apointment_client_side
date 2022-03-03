@@ -38,16 +38,6 @@ const DoctorBlogs = () => {
       
       }, [user.email , doctors])
    
-    // React.useEffect(()=>{
-
-    //     if(user.photoURL == null){
-    //         setPhotoUrl ('https://upload.wikimedia.org/wikipedia/commons/d/d1/Image_not_available.png')
-    //     }
-    //     else {
-    //         setPhotoUrl(user.photoURL)
-    //     }
-
-    // } , [user])
    
     let today = new Date().toLocaleDateString()
     const addBlogs= ()=>{

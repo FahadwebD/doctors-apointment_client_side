@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react"
+import useAuth from "./useAuth"
 
 
 const useVisitedPatients =()=>{
     const [check , setCheck] = useState([])
+    const {user } = useAuth()
+    const [specificDoctorsPatients , setSpecificDoctorsPatients] = useState([])
 
     useEffect(()=>{
   
@@ -19,8 +22,26 @@ const useVisitedPatients =()=>{
 
   },[])
 
+
+  useEffect(()=>{
+  
+
+    fetch(`http://localhost:5000/prescriptions/${user.email}`)
+    .then(res => res.json())
+    .then(data => setSpecificDoctorsPatients(data.reverse()))
+
+  
+   
+ 
+
+
+
+},[user])
+
+
   return {
-      check
+      check,
+      specificDoctorsPatients
   }
 }
 
