@@ -7,6 +7,9 @@ import LatestBlogs from './LatestBlogs';
 import useBlogs from '../../../hooks/useBlogs';
 import TotalBlogs from './TotalBlogs';
 import RecentBlogs from './RecentBlogs';
+import useDoctors from '../../../hooks/useDoctors';
+
+import Bloger from './Bloger';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -18,6 +21,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 const AllBlogs = () => {
     const {allBlogs} = useBlogs()
+    const {doctors} = useDoctors()
     return (
         <div>
             <Container>
@@ -33,7 +37,7 @@ const AllBlogs = () => {
             <div style={{backgroundColor:'gray'}}><h3 style={{color:'white'}}>Recent Post</h3></div>
           <Item>{allBlogs?.map(latest =><RecentBlogs latest={latest}></RecentBlogs>)}</Item>
           <div style={{backgroundColor:'gray'}}><h3 style={{color:'white'}}> Doctors</h3></div>
-          <Item>xs=4</Item>
+          <Item>{doctors?.map(doc => <Bloger doc={doc}></Bloger>)}</Item>
         </Box>
         
         

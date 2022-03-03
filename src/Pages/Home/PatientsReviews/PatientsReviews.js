@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PatientsReview from '../PatientsReview/PatientsReview';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Navigation } from 'swiper';
 import 'swiper/swiper-bundle.min.css';
-import { Container } from '@mui/material';
+import { Button, Container } from '@mui/material';
+import GiveReview from '../GiveReview/GiveReview';
 
 
 SwiperCore.use([Navigation]);
@@ -35,6 +36,27 @@ const services = [
     }
 ]
 const PatientsReviews = () => {
+  const [open, setOpen] = React.useState(false);
+
+  const [review , setReview] = useState([])
+
+  useEffect(()=>{
+    fetch('http://localhost:5000/reviews')
+    .then(res=>res.json())
+    .then(data=>setReview(data))
+  },[])
+console.log(review)
+
+
+
+
+
+
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+
     return (
         <>
        <Container style={{marginTop:'50px' }}>
@@ -64,20 +86,36 @@ const PatientsReviews = () => {
               },
             }}
           >
-             {services.map((project) => 
+             {review.map((project) => 
               
               
                 <SwiperSlide  >
                   <PatientsReview
                     
-                    title={project.name}
+                    rating={project.rating}
                     
-                    desc={project.description}
+                    feedBack={project.feedBack}
+                    name = {project.name}
+                    pic = {project.pic}
+                    date = {project.today}
+                    rate = {project.rating}
                   />
                 </SwiperSlide>
               
             )}
           </Swiper>
+        </div>
+        <Button onClick={handleOpen}  variant="contained" style={{ backgroundColor: '#5CE7ED' }}>Rate Us</Button>
+        <div></div>
+
+        <div>
+        <div>
+        <GiveReview
+          open={open}
+          handleClose={handleClose}
+         
+         ></GiveReview>
+    </div>
         </div>
        </Container>
         </>

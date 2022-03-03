@@ -41,7 +41,7 @@ const OurBlogs = () => {
 
                  </Card>
                 {
-                   allBlogs?.slice(-2).map(blog=> <OurBlog 
+                   allBlogs?.slice(-3).map(blog=> <OurBlog 
                    blog={blog}>
 
                    </OurBlog>)

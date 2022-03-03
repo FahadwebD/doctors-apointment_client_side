@@ -4,6 +4,7 @@ import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
 import ButtonBase from '@mui/material/ButtonBase';
+import { Link } from 'react-router-dom';
 
 const Img = styled('img')({
   
@@ -13,9 +14,10 @@ const Img = styled('img')({
 });
 
 const TotalBlogs = ({latest}) => {
-    const {blogs , image , head , name ,publishiDate    } = latest
+    const {blogs , image , head , name ,publishiDate , _id   } = latest
     const slicedBlogs= blogs.slice(0 , 200)
     console.log(slicedBlogs)
+    const url = `/blogDetails/${_id}`
     return (
         <div>
             <Paper
@@ -50,9 +52,10 @@ const TotalBlogs = ({latest}) => {
               </Typography>
             </Grid>
             <Grid item>
-              <Typography sx={{ cursor: 'pointer' }} variant="body2">
+            <Link style={{textDecoration:'none'}} to={url}>   <Typography sx={{ cursor: 'pointer' }} variant="body2">
                 Continue Reading
               </Typography>
+              </Link>
             </Grid>
           </Grid>
           <Grid item>

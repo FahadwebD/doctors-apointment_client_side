@@ -1,24 +1,12 @@
 import { Box, Modal, Typography } from '@mui/material';
 import React from 'react';
+import './OurBlog.css'
 
 import {
     FacebookShareButton,
-    GooglePlusShareButton,
-    LinkedinShareButton,
-    TwitterShareButton,
-    TelegramShareButton,
+    
     WhatsappShareButton,
-    PinterestShareButton,
-    VKShareButton,
-    OKShareButton,
-    RedditShareButton,
-    TumblrShareButton,
-    LivejournalShareButton,
-    MailruShareButton,
-    ViberShareButton,
-    WorkplaceShareButton,
-    LineShareButton,
-    EmailShareButton,
+  
   } from 'react-share';
 
   import {
@@ -35,7 +23,7 @@ import {
 
 
 
-const ShareSocial = ({open , handleClose ,name , img , blogs ,id}) => {
+const ShareSocial = ({open , handleClose ,name , blogs ,id}) => {
 
 
     const text = name; 
@@ -51,25 +39,20 @@ const ShareSocial = ({open , handleClose ,name , img , blogs ,id}) => {
         <Box className='s'>
         <div className='gridIcon'>
         <WhatsappShareButton
-       url={`http://localhost:3000/blogDetails/${id}`} 
-       hashtag='#React'
-       quote = {text}
+       url={`https://doctors-apointment.netlify.app/blogDetails/${id}`} 
+       hashtag={text}
+       quote = {blogs}
         
         >
         <WhatsappIcon size={40} round={true} />
         </WhatsappShareButton>
         <FacebookShareButton
-       url={`http://localhost:3000/blogDetails/${id}`} 
-        hashtag='#React'
+        url={`https://doctors-apointment.netlify.app/blogDetails/${id}`} 
+        hashtag={text}
         quote = {blogs}
         
         ><FacebookIcon size={40} round={true} /></FacebookShareButton>
-        <TwitterIcon size={40} round={true} />
-        <TelegramIcon size={40} round={true} />
-        <LinkedinIcon size={40} round={true} />
        
-        <ViberIcon size={40} round={true} />
-        <EmailIcon size={40} round={true} />
         </div>
         </Box>
       </Modal>
