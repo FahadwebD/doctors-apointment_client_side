@@ -15,7 +15,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import person from '../../../images/people-1.png'
+import ShareSocial from './ShareSocial'
 import { Link } from 'react-router-dom';
 
 
@@ -33,13 +33,18 @@ const ExpandMore = styled((props) => {
   
 const OurBlog = ({blog}) => {
    
- 
-    const {name , description , photoUrl , publishiDate , head ,_id} = blog;
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+
+    const {name , description , photoUrl , publishiDate , head ,_id , image, blogs} = blog;
     const url = `/blogDetails/${_id}`
  const testing =moment(publishiDate).format('LL');
- 
+  const img = `data:image/png;base64,${image}`
     return (
-      <Link style={{textDecoration:'none'}} to={url}> <Card className='cardss'>
+      <>
+      <Card className='cardss'>
       <CardHeader
         avatar={
           <Avatar alt="doctors" src={`data:image/png;base64,${photoUrl}`} />
@@ -52,7 +57,7 @@ const OurBlog = ({blog}) => {
         title={name}
         subheader={testing}
       />
-      
+       <Link style={{textDecoration:'none'}} to={url}>
       <CardContent>
         <h2 id='headlineB' >{head}</h2>
       
@@ -62,18 +67,32 @@ const OurBlog = ({blog}) => {
           if you like.
         </Typography>
       </CardContent>
-      
+      </Link>
     <div style={{display:'flex' ,marginTop:'5px' , justifyContent:'flex-end'}}>
     <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>
-        <IconButton aria-label="share">
+        <IconButton onClick={handleOpen} aria-label="share">
           <ShareIcon />
         </IconButton>
     </div>
       
     </Card>
-    </Link>
+  
+
+    <div>
+    <div>
+        <ShareSocial 
+          open={open}
+          handleClose={handleClose}
+          name={name}
+          img={img}
+          id={_id}
+          blogs={blogs}
+         ></ShareSocial>
+    </div>
+    </div>
+    </>
   );
 };
 
