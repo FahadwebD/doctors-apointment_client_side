@@ -31,16 +31,19 @@ import useAuth from '../../../hooks/useAuth';
 const GiveReview = ({open , handleClose ,name , blogs ,id}) => {
 
     const [valueRating, setValueRating] = React.useState(1);
-    const [value, setValue] = React.useState('');
+    const [feedback, setFeedback] = React.useState('');
      const {user} = useAuth()
-    const handleChange = (event) => {
-      setValue(event.target.value);
+
+
+    const handleChangeText = (event) => {
+        setFeedback(event.target.value);
     };
+    
     console.log(user)
     let today = new Date().toLocaleDateString()
    
     const addReview = ()=>{
-        const review = {feedBack:value , rating:valueRating , today , name:user.displayName , pic:user.photoURL};
+        const review = {feedBack:feedback, rating:valueRating , today , name:user.displayName , pic:user.photoURL};
         console.log(review)
         fetch('http://localhost:5000/reviews/add' , {
             method:'POST',
@@ -76,8 +79,8 @@ const GiveReview = ({open , handleClose ,name , blogs ,id}) => {
          <div>
         
            <Rating
-        name="simple-controlled"
-        value={value}
+       name="size-medium"
+        value={valueRating}
         onChange={(event, newValue) => {
             setValueRating(newValue);
         }}
@@ -88,9 +91,9 @@ const GiveReview = ({open , handleClose ,name , blogs ,id}) => {
           label="Multiline"
           multiline
           maxRows={4}
-          value={value}
+          value={feedback}
           
-          onChange={handleChange}
+          onChange={handleChangeText}
         />
         <Button onClick={addReview}>Add Your Feed Back</Button>
            </Box>

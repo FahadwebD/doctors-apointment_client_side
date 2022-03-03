@@ -8,33 +8,7 @@ import GiveReview from '../GiveReview/GiveReview';
 
 
 SwiperCore.use([Navigation]);
-const services = [
-    {
-        name: 'Alex',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed culpa cumque enim! Voluptatibus aliquid expedita saepe accusantium itaque ducimus rem voluptas',
-        
-    },
-    {
-        name: 'Fahad',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed culpa cumque enim! Voluptatibus aliquid expedita saepe accusantium itaque ducimus rem voluptas',
-        
-    },
-    {
-        name: 'Nipen',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed culpa cumque enim! Voluptatibus aliquid expedita saepe accusantium itaque ducimus rem voluptas',
-        
-    },
-    {
-        name: 'Hope Js',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed culpa cumque enim! Voluptatibus aliquid expedita saepe accusantium itaque ducimus rem voluptas',
-        
-    },
-    {
-        name: 'Pilon mark',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed culpa cumque enim! Voluptatibus aliquid expedita saepe accusantium itaque ducimus rem voluptas',
-        
-    }
-]
+
 const PatientsReviews = () => {
   const [open, setOpen] = React.useState(false);
 
@@ -91,7 +65,7 @@ console.log(review)
               
                 <SwiperSlide  >
                   <PatientsReview
-                    
+                    key={project._id}
                     rating={project.rating}
                     
                     feedBack={project.feedBack}

@@ -1,9 +1,9 @@
 
-import { Avatar, CardHeader, IconButton, Rating, Typography } from '@mui/material';
-import * as React from 'react';
 
+import * as React from 'react';
+import { Avatar, CardHeader, IconButton, Rating, Typography } from '@mui/material';
 import './PatientsReview.css'
-import person from '../../../images/people-2.png'
+
 
 const PatientsReview = ({ feedBack , name , pic , date , rate}) => {
    console.log(feedBack)
@@ -20,7 +20,7 @@ const PatientsReview = ({ feedBack , name , pic , date , rate}) => {
                     <Typography variant="h5" component="div">
         <Rating name="read-only" value={rate} readOnly sx={{color:'gold'}}/>
         </Typography>
-              <div style={{marginTop:'50px'}}>
+              <div style={{marginTop:'30px'}}>
               <CardHeader
         avatar={
           <Avatar alt="doctors" src={pic} />
