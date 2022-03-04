@@ -131,7 +131,7 @@ console.log(navUse)
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>{isDoctor? `Dr . ${user.displayName}`:  `${user.displayName}`}</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+ <Link to= "/myPrescriptions"><MenuItem onClick={handleMenuClose}>My Prescription</MenuItem></Link> 
       <MenuItem onClick={logout}>Log Out</MenuItem>
     </Menu>
   );

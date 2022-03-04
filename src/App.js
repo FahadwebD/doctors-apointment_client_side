@@ -20,6 +20,7 @@ import AddDoctor from './Pages/Dashboard/AddDoctor/AddDoctor';
 import Blogs from './Pages/Blogs/Blogs/Blogs';
 import NotFound from './Pages/NotFound/NotFound';
 import BlogsDetail from './Pages/Blogs/BlogsDetail/BlogsDetail';
+import MyPrescriptions from './Pages/MyPrescriptions/MyPrescriptions';
 
 
 function App() {
@@ -34,6 +35,9 @@ function App() {
             <PrivateRoute path="/dashboard">
               <Dashboard />
             </PrivateRoute>
+            <Route path="/myPrescriptions">
+              <MyPrescriptions></MyPrescriptions>
+            </Route>
             <Route exact path="/blogDetails/:blogId">
               <BlogsDetail></BlogsDetail>
             </Route>

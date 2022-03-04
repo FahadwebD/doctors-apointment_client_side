@@ -48,15 +48,15 @@ console.log(review)
             breakpoints={{
               // when window width is >= 640px
               640: {
-                slidesPerView: 1,
+                slidesPerView: 4,
               },
               // when window width is >= 768px
               768: {
-                slidesPerView: 2,
+                slidesPerView: 4,
               },
               // when window width is >= 1200px
               1200: {
-                slidesPerView: 3,
+                slidesPerView: 4,
               },
             }}
           >
@@ -67,7 +67,6 @@ console.log(review)
                   <PatientsReview
                     key={project._id}
                     rating={project.rating}
-                    
                     feedBack={project.feedBack}
                     name = {project.name}
                     pic = {project.pic}
