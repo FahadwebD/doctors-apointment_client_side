@@ -14,6 +14,8 @@ const useFirebase = () => {
     const [doctor, setDoctor] = useState(false);
     const [dashboardUse ,setDashboardUse] = useState(false)
     const [navUse , setNavUse] = useState(false)
+    const [notifications , setNotifications] = useState(false)
+    const [unreadCount , setUnreadCount]= useState(0)
     const {doctors} = useDoctors()
 
     const auth = getAuth();
@@ -132,6 +134,27 @@ const useFirebase = () => {
             .then()
     }
 
+       useEffect(()=>{
+           fetch(`http://localhost:5000/notification/my/prescriptions/${user.email}`)
+           .then(res => res.json())
+           .then(data =>{ 
+               setNotifications(data.isUnread)
+               setUnreadCount(data.unreadNotification)
+            })
+       },[user.email])
+
+
+
+
+
+
+
+
+
+
+
+
+
     return {
         user,
         admin,
@@ -143,7 +166,9 @@ const useFirebase = () => {
         loginUser,
         signInWithGoogle,
         logout,
-        navUse
+        navUse,
+        notifications ,
+        unreadCount
     }
 }
 

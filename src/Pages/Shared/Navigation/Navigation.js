@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
+import Stack from '@mui/material/Stack';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -68,7 +69,7 @@ const Search = styled('div')(({ theme }) => ({
 const Navigation = () => {
     const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
- const {user , logout , dashboardUse , navUse} = useAuth();
+ const {user , logout , dashboardUse , navUse , notifications, unreadCount} = useAuth();
  const {doctors} = useDoctors()
  
   const [isDoctor , setIsDoctor] = React.useState(false)
@@ -131,7 +132,9 @@ console.log(navUse)
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>{isDoctor? `Dr . ${user.displayName}`:  `${user.displayName}`}</MenuItem>
- <Link to= "/myPrescriptions"><MenuItem onClick={handleMenuClose}>My Prescription</MenuItem></Link> 
+     
+{isDoctor?'':<div> {notifications? <Badge badgeContent={unreadCount} color="secondary"><Link to= "/myPrescriptions" style={{color:'red', textDecoration:'none'}}><MenuItem onClick={handleMenuClose}>My Prescription</MenuItem></Link></Badge>:<Link to= "/myPrescriptions" style={{color:'blue' , textDecoration:'none'}}><MenuItem onClick={handleMenuClose}>My Prescription</MenuItem></Link>  }</div>}
+ 
       <MenuItem onClick={logout}>Log Out</MenuItem>
     </Menu>
   );
@@ -153,20 +156,13 @@ console.log(navUse)
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-    {navUse ?  <MenuItem>
+    {navUse &&  <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           
             <DashboardCustomizeRoundedIcon />
           
         </IconButton>
         <p>Dashboard</p>
-      </MenuItem>:  <MenuItem>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          
-            <ReviewsIcon />
-          
-        </IconButton>
-        <p>Give your valuable reviews</p>
       </MenuItem>}
     
       <MenuItem>
@@ -228,22 +224,12 @@ console.log(navUse)
 
       
         {user?.email? <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-        {navUse ?<div  style={{marginTop:'20px', marginRight:'15px'}} >
+        {navUse && <div  style={{marginTop:'20px', marginRight:'15px'}} >
           <Tooltip title="Dashboard" arrow>
          <Link  to='/dashboard' style={{ textDecoration: 'none' , color:"inherit"}}>
         
             
                 Dashboard
-               
-          
-         </Link>
-            </Tooltip>
-            </div>:   <div style={{marginTop:'20px', marginRight:'15px'}}>
-            <Tooltip title="Give Us You Valuable Reviews" arrow>
-         <Link to='/appointment' style={{ textDecoration: 'none' , color:"inherit"}}>
-      
-            
-                Review
                
           
          </Link>

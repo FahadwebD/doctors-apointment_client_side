@@ -119,7 +119,8 @@ const Patients = () => {
           service : info.serviceName,
           medicine,
           date ,
-          uqId :info._id
+          uqId :info._id,
+          status:'unread'
       }
     
       // send to the server
