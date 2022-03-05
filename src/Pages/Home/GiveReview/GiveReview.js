@@ -45,7 +45,7 @@ const GiveReview = ({open , handleClose ,name , blogs ,id}) => {
     const addReview = ()=>{
         const review = {feedBack:feedback, rating:valueRating , today , name:user.displayName , pic:user.photoURL};
         console.log(review)
-        fetch('http://localhost:5000/reviews/add' , {
+        fetch('https://floating-cliffs-15059.herokuapp.com/reviews/add' , {
             method:'POST',
             headers:{
                 'content-type': 'application/json'

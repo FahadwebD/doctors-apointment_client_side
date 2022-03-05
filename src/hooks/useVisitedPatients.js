@@ -27,7 +27,7 @@ const useVisitedPatients =()=>{
   useEffect(()=>{
   
 
-    fetch(`http://localhost:5000/prescriptions/${user.email}`)
+    fetch(`https://floating-cliffs-15059.herokuapp.com/prescriptions/${user.email}`)
     .then(res => res.json())
     .then(data => setSpecificDoctorsPatients(data.reverse()))
 
@@ -41,7 +41,7 @@ const useVisitedPatients =()=>{
 useEffect(()=>{
   
 
-  fetch(`http://localhost:5000/my/prescriptions/${user.email}`)
+  fetch(`https://floating-cliffs-15059.herokuapp.com/my/prescriptions/${user.email}`)
   .then(res => res.json())
   .then(data => setMyPrescriptions(data.reverse()))
 

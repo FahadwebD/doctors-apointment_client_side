@@ -45,7 +45,7 @@ export default function DoctorOldPatients() {
        console.log(newMed)
        console.log(email)
        const user= {email , newMed ,date}
-        fetch('http://localhost:5000/prescriptions/doctor', {
+        fetch('https://floating-cliffs-15059.herokuapp.com/prescriptions/doctor', {
             method: 'PUT',
             headers: {
                 

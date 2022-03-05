@@ -135,7 +135,7 @@ const useFirebase = () => {
     }
 
        useEffect(()=>{
-           fetch(`http://localhost:5000/notification/my/prescriptions/${user.email}`)
+           fetch(`https://floating-cliffs-15059.herokuapp.com/notification/my/prescriptions/${user.email}`)
            .then(res => res.json())
            .then(data =>{ 
                setNotifications(data.isUnread)

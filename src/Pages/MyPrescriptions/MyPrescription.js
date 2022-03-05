@@ -59,7 +59,7 @@ const MyPrescription = ({prescription}) => {
         exportPdf();
        console.log(_id)
      const  user = {_id}
-        fetch('http://localhost:5000/prescriptions', {
+        fetch('https://floating-cliffs-15059.herokuapp.com/prescriptions', {
             method: 'PUT',
             headers: {
                 
