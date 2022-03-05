@@ -156,24 +156,27 @@ console.log(navUse)
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-    {navUse &&  <MenuItem>
+    {navUse &&  <Link to='/dashboard'>
+      <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           
             <DashboardCustomizeRoundedIcon />
           
         </IconButton>
         <p>Dashboard</p>
-      </MenuItem>}
+      </MenuItem>
+    </Link>}
     
-      <MenuItem>
+     <Link to='/appointment'> <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           
             <MedicalServicesIcon />
           
         </IconButton>
         <p>Dental Services</p>
-      </MenuItem>
-      <MenuItem>
+      </MenuItem></Link>
+    <Link to='/blogs'>
+    <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           
             <ChromeReaderModeIcon />
@@ -181,6 +184,7 @@ console.log(navUse)
         </IconButton>
         <p>Blogs</p>
       </MenuItem>
+    </Link>
    
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
