@@ -16,30 +16,14 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
+    maxWidth: 400,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
-    p: 4,
+    padding: '50px',
+    m:4
 };
-const currencies = [
-    {
-      value: 'USD',
-      label: '$',
-    },
-    {
-      value: 'EUR',
-      label: '€',
-    },
-    {
-      value: 'BTC',
-      label: '฿',
-    },
-    {
-      value: 'JPY',
-      label: '¥',
-    },
-  ];
+
 
 const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBookingSuccess }) => {
     const [doctor, setDoctor] = React.useState('fahad');
@@ -108,13 +92,14 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
             BackdropProps={{
                 timeout: 500,
             }}
+           
         >
             <Fade in={openBooking}>
                {todayAppointments?.length >= 50? <div><h1>Sorry No More Appointments Today</h1></div>: <Box sx={style} style={{border:'none' , width:'600px' , padding:'20px' , borderRadius:'10px' ,margin:'20px'}}>
                     <Typography style={{textAlign:"center" , color:'#5CE7ED'}} id="transition-modal-title" variant="h6" component="h2">
                         {name}
                     </Typography>
-                    <form onSubmit={handleBookingSubmit} style={{ maxWidth:'550px',margin:'30px 30px 30px 70px'}}>
+                    <form onSubmit={handleBookingSubmit} style={{ maxWidth:'400px',margin:'30px 30px 30px 30px'}}>
                         <TextField
                             disabled
                             sx={{ width: '90%', m: 1 }}
@@ -123,11 +108,12 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
                             size="small"
                         />
                         <TextField
+                            required
                             sx={{ width: '90%', m: 1 }}
                             id="outlined-size-small"
                             name="patientName"
                             onBlur={handleOnBlur}
-                            defaultValue={'fahad'}
+                          
                             size="small"
                         />
                         <TextField
@@ -143,6 +129,7 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
                               }}
                         />
                         <TextField
+                            required
                             sx={{ width: '90%', m: 1 }}
                             id="outlined-size-small"
                             name="phone"
@@ -161,6 +148,7 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
 
           sx={{ width: '90%', m: 1 }}
           id="outlined-size-small"
+          required
           select
           label="Select which Doctor Appointment You Want"
           value={doctors?.email}

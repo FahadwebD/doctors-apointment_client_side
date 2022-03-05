@@ -17,6 +17,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ShareSocial from './ShareSocial'
 import { Link } from 'react-router-dom';
+import { Grid } from '@mui/material';
 
 
 const ExpandMore = styled((props) => {
@@ -43,7 +44,7 @@ const OurBlog = ({blog}) => {
  const testing =moment(publishiDate).format('LL');
   const img = `data:image/png;base64,${image}`
     return (
-      <>
+      <Grid item xs={12} sm={6} md={4}>
       <Card className='cardss'>
       <CardHeader
         avatar={
@@ -76,13 +77,7 @@ const OurBlog = ({blog}) => {
           <ShareIcon />
         </IconButton>
     </div>
-      
-    </Card>
-  
-
-    <div>
-    <div>
-        <ShareSocial 
+    <ShareSocial 
           open={open}
           handleClose={handleClose}
           name={name}
@@ -90,9 +85,8 @@ const OurBlog = ({blog}) => {
           id={_id}
           blogs={blogs}
          ></ShareSocial>
-    </div>
-    </div>
-    </>
+    </Card>
+    </Grid>
   );
 };
 

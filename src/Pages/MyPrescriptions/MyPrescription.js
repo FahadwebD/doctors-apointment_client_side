@@ -14,7 +14,7 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 700,
+    width: 400,
     height:500 ,
     bgcolor: 'background.paper',
     border: '2px solid #000',
@@ -32,7 +32,7 @@ const MyPrescription = ({prescription}) => {
  const handleOpen = () => setOpen(true);
  const handleClose = () => setOpen(false);
 
- const {_id , status} = prescription
+ const {_id } = prescription
 
 
   const  exportPdf = () => {
@@ -102,16 +102,13 @@ const MyPrescription = ({prescription}) => {
         aria-describedby="modal-modal-description"
       >
            
-        <Box sx={style} className='modalO'>
+        <Box sx={style} >
         <div id="capture" style={{  padding:'20px' , textAlign:"center"}}>
           <div style={{display:'flex' , backgroundColor:'gray'}}>
               <div><img src={img} alt="" style={{margin:'10px' , height:'110px' , width:'100px'}}/></div>
               <div style={{marginLeft:'150px'}}>
-                  <h3><span style={{color:'red'}}>Doctor Portal</span> </h3>
-                  <h6>Doctor of Dental Surgery2007
-New York University College of Dentistry
-Bachelor of Science in Biology2003
-University of CaliforniaCity, State </h6>
+                  <h3><span style={{color:'white'}}>Doctor Portal</span> </h3>
+                  <h6>Doctor of Dental Services </h6>
               </div>
           </div>
           <hr/>

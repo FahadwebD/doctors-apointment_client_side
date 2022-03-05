@@ -2,7 +2,7 @@ import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
-import { Container } from '@mui/material';
+import { Container, Grid } from '@mui/material';
 import LatestBlogs from './LatestBlogs';
 import useBlogs from '../../../hooks/useBlogs';
 import TotalBlogs from './TotalBlogs';
@@ -26,23 +26,23 @@ const AllBlogs = () => {
         <div>
             <Container>
             <Box sx={{ width: 1 }}>
-      <Box display="grid" gridTemplateColumns="repeat(12, 1fr)" gap={2}>
+       <Grid container spacing={2}>
          
-        <Box gridColumn="span 8">
+       <Grid item xs={12} md={8}>
       
           <Item>{allBlogs?.slice(-1).map(latest =><LatestBlogs latest={latest}></LatestBlogs>)}</Item>
           <Item>{allBlogs?.map(latest =><TotalBlogs latest={latest}></TotalBlogs>)}</Item>
-        </Box>
-        <Box gridColumn="span 4">
+          </Grid>
+          <Grid item xs={12} md={4}>
             <div style={{backgroundColor:'gray'}}><h3 style={{color:'white'}}>Recent Post</h3></div>
           <Item>{allBlogs?.map(latest =><RecentBlogs latest={latest}></RecentBlogs>)}</Item>
           <div style={{backgroundColor:'gray'}}><h3 style={{color:'white'}}> Doctors</h3></div>
           <Item>{doctors?.map(doc => <Bloger doc={doc}></Bloger>)}</Item>
-        </Box>
+          </Grid>
         
         
         
-      </Box>
+        </Grid>
     </Box>
     </Container>
  

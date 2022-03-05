@@ -3,7 +3,7 @@ import React from 'react';
 const RecentBlogs = ({latest}) => {
     const {blogs , image , head , name ,publishiDate    } = latest
     return (
-        <div>
+        <div style={{textAlign:'left'}}>
             <h3 style={{color:'blue' , margin:'0%'}}>✔ {head}</h3>
         </div>
     );
