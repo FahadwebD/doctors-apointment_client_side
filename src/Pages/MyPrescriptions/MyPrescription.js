@@ -50,7 +50,7 @@ const MyPrescription = ({prescription}) => {
              const pdfWidth = pdf.internal.pageSize.getWidth();
              const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
              pdf.addImage(imgData, "JPEG", 0, 0, pdfWidth, pdfHeight);
-             pdf.save();
+             pdf.save('prescriptions');
        });
    
     }
