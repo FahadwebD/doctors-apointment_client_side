@@ -14,8 +14,8 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
-    height:500 ,
+    width: 700,
+    height:600 ,
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
@@ -34,7 +34,7 @@ const MyPrescription = ({prescription}) => {
 
  const {_id } = prescription
 
-
+console.log(prescription.date)
   const  exportPdf = () => {
         
         html2canvas(document.querySelector("#capture"), { logging: true, letterRendering: 1, allowTaint: false ,useCORS: true } ).then(canvas => {

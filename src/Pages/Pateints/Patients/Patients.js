@@ -14,6 +14,7 @@ import Modal from '@mui/material/Modal';
 import useAuth from '../../../hooks/useAuth';
 
 import { TextField } from '@mui/material';
+import  moment  from 'moment';
 
 
 const style = {
@@ -106,8 +107,8 @@ const Patients = () => {
 
 
 
-  const date = new Date().toLocaleDateString();
-
+  const date = new Date();
+  const update =moment(date).format('M/D/Y')
     const handleReportSubmit = e => {
       // collect data
      
@@ -118,7 +119,7 @@ const Patients = () => {
        
           service : info.serviceName,
           medicine,
-          date ,
+          update ,
           uqId :info._id,
           status:'unread'
       }

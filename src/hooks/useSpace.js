@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-
+import moment  from "moment";
 
 const useSpace = ()=>{
 
@@ -10,9 +10,10 @@ const useSpace = ()=>{
     const [result, setResult] = useState()
     useEffect(()=>{
        
-        const date = new Date().toLocaleDateString();
+        const date = new Date();
+        const update =moment(date).format('M/D/Y')
 
-        fetch(`https://floating-cliffs-15059.herokuapp.com/today/appointments?date=${date}`)
+        fetch(`https://floating-cliffs-15059.herokuapp.com/today/appointments?date=${update}`)
         .then(res => res.json())
         .then(data => setTodayAppointments(data))
 

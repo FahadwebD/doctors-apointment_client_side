@@ -10,6 +10,7 @@ import useCounts from '../../../hooks/useCounts';
 import useVisitedPatients from '../../../hooks/useVisitedPatients';
 
 import { Button, TextField } from '@mui/material';
+import moment  from 'moment';
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -40,11 +41,13 @@ export default function DoctorOldPatients() {
     const handleOnBlur = e => {
         setNewMed(e.target.value);
     }
-    const date = new Date().toLocaleDateString();
+    const date = new Date();
+    const update =moment(date).format('M/D/Y')
+    console.log()
     const handleAdminSubmit = e => {
        console.log(newMed)
        console.log(email)
-       const user= {email , newMed ,date}
+       const user= {email , newMed ,update }
         fetch('https://floating-cliffs-15059.herokuapp.com/prescriptions/doctor', {
             method: 'PUT',
             headers: {

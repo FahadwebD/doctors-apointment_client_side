@@ -12,7 +12,7 @@ const Booking = ({ booking, date, setBookingSuccess ,handleAddToCart  }) => {
  
     const [result , setResult] = useState(space)
     // const [pactice , setPractice] = useState(space)
-
+  console.log(date)
     useEffect(()=>{
        
         const result = todayAppointments?.filter(s=> s.serviceName === name)

@@ -8,18 +8,19 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 const Appointments = ({ date }) => {
     const { user, token } = useAuth();
     const [appointments, setAppointments] = useState([])
-
+    const update =moment(date).format('M/D/Y')
     useEffect(() => {
-        const url = `https://floating-cliffs-15059.herokuapp.com/appointments?email=${user.email}&date=${date.toLocaleDateString()}`
+        const url = `https://floating-cliffs-15059.herokuapp.com/appointments?email=${user.email}&date=${update}`
         fetch(url)
             .then(res => res.json())
             .then(data => setAppointments(data));
-    }, [date, user.email, token])
-
+    }, [update, user.email, token])
+console.log(token)
     return (
         <div>
             <h2>Appointments: {appointments.length}</h2>

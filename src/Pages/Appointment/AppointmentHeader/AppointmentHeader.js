@@ -10,7 +10,7 @@ const appointmentBanner = {
     
 }
 const AppointmentHeader = ({ date, setDate }) => {
-
+        console.log(date)
     return (
         <div style={appointmentBanner}>
             <Container >

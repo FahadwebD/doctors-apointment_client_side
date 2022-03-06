@@ -10,6 +10,7 @@ import useAuth from '../../../hooks/useAuth';
 import useDoctors from '../../../hooks/useDoctors'
 import { MenuItem } from '@mui/material';
 import useCounts from '../../../hooks/useCounts';
+import moment from 'moment';
 
 const style = {
     position: 'absolute',
@@ -44,7 +45,8 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
         newInfo[field] = value;
         setBookingInfo(newInfo);
     }
-
+ const update =moment(date).format('M/D/Y')
+ console.log(update)
     const handleBookingSubmit = e => {
         // collect data
         const appointment = {
@@ -53,7 +55,7 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
             time,
             price,
             serviceName: name,
-            date: date.toLocaleDateString(),
+            date: update,
             status:'pending'
         }
        

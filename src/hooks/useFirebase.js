@@ -16,6 +16,7 @@ const useFirebase = () => {
     const [navUse , setNavUse] = useState(false)
     const [notifications , setNotifications] = useState(false)
     const [unreadCount , setUnreadCount]= useState(0)
+    const [token, setToken] = useState('');
     const {doctors} = useDoctors()
 
     const auth = getAuth();
@@ -78,6 +79,10 @@ const useFirebase = () => {
         const unsubscribed = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setUser(user);
+                getIdToken(user)
+                .then(idToken => {
+                    setToken(idToken);
+                })
                 
             } else {
                 setUser({})
@@ -168,7 +173,8 @@ const useFirebase = () => {
         logout,
         navUse,
         notifications ,
-        unreadCount
+        unreadCount,
+        token,
     }
 }
 
