@@ -1,5 +1,6 @@
 import React from 'react';
 import useServices from '../../../hooks/useServices'
+import AddService from './AddService';
 import ServiceManage from './ServiceManage';
 const ServicesManagement = () => {
     const {services , setServices} = useServices()
@@ -27,7 +28,7 @@ const ServicesManagement = () => {
     return (
         <div>
             <h1>Services</h1>
-
+            <AddService></AddService>
             <div>
                 {
                     services?.map(service => <ServiceManage 

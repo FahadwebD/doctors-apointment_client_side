@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { TextField } from '@mui/material';
+import AddService from './AddService';
 
 const style = {
   position: 'absolute',
@@ -80,6 +81,9 @@ const ServiceManage = ({service  , handleServiceDelete}) => {
 
     return (
         <div>
+            <div>
+               
+            </div>
             <div style={{display:"flex"}}>
             <h5>{service.name}</h5> <Button onClick={handleOpen}>Update</Button> <Button onClick={()=>handleServiceDelete (service._id)}>Delete</Button>
         </div>
