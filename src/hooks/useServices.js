@@ -18,7 +18,8 @@ const useServices = () =>{
     },[])
 
     return {
-        services
+        services,
+        setServices
     }
 }
 
