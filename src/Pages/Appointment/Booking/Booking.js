@@ -5,17 +5,18 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import BookingModal from '../BookingModal/BookingModal';
 import useCounts from '../../../hooks/useCounts'
+import moment from 'moment';
 
 const Booking = ({ booking, date, setBookingSuccess ,handleAddToCart  }) => {
     const { name, time, space, price } = booking;
     const {todayAppointments} = useCounts()
- 
+    const [appointments, setAppointments] = useState([])
     const [result , setResult] = useState(space)
     // const [pactice , setPractice] = useState(space)
   console.log(date)
     useEffect(()=>{
        
-        const result = todayAppointments?.filter(s=> s.serviceName === name)
+        const result = appointments?.filter(s=> s.serviceName === name)
         // console.log(result)
         
         const getV = result?.length
@@ -23,13 +24,20 @@ const Booking = ({ booking, date, setBookingSuccess ,handleAddToCart  }) => {
         const total = space - getV
         setResult(total )
 
-    },[todayAppointments , name,result ,space])
+    },[appointments , name,result ,space])
 
-
+    
+    const update =moment(date).format('M/D/Y')
+    useEffect(() => {
+        const url = `http://localhost:5000/count/appointments?date=${update}`
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setAppointments(data));
+    }, [update])
     
 
 
-
+console.log(appointments)
 
 
 
