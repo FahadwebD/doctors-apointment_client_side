@@ -49,14 +49,14 @@ const ServiceManage = ({service  , handleServiceDelete}) => {
         const updateService = {
             name,
             time,
-            price,
-            space,
+            price: parseInt(price),
+            space : parseInt(space),
             _id
             
         }
        console.log(updateService)
    
-       fetch('https://floating-cliffs-15059.herokuapp.com/services/edit', {
+       fetch('http://localhost:5000/services/edit', {
            method: 'PUT',
            headers: {
                
@@ -84,8 +84,8 @@ const ServiceManage = ({service  , handleServiceDelete}) => {
             <div>
                
             </div>
-            <div style={{display:"flex"}}>
-            <h5>{service.name}</h5> <Button onClick={handleOpen}>Update</Button> <Button onClick={()=>handleServiceDelete (service._id)}>Delete</Button>
+            <div style={{display:"flex" , justifyContent:'space-between'}}>
+            <h5>{service.name}</h5> <div><Button style={{backgroundColor:'green' , color:'white'}} onClick={handleOpen}>Update</Button> <Button style={{backgroundColor:'red' , color:'white'}} onClick={()=>handleServiceDelete (service._id)}>Delete</Button></div>
         </div>
         <hr />
         <Modal

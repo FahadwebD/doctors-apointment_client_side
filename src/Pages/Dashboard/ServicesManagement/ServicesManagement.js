@@ -29,6 +29,11 @@ const ServicesManagement = () => {
         <div>
             <h1>Services</h1>
             <AddService></AddService>
+
+            <div style={{display:"flex" , justifyContent:'space-between'}}>
+            <h5>Name</h5> <div style={{marginRight:'50px'}}><h5>Action</h5></div>
+        </div>
+        <hr />
             <div>
                 {
                     services?.map(service => <ServiceManage 

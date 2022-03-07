@@ -7,6 +7,7 @@ import Fade from '@mui/material/Fade';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { TextField } from '@mui/material';
+import { useForm } from 'react-hook-form';
 
 const style = {
   position: 'absolute',
@@ -20,36 +21,14 @@ const style = {
   pt: 2,
   px: 4,
   pb: 3,
+  
 };
 
 
 const AddService = () => {
     const [open, setOpen] = React.useState(false);
     
-    const [bookingInfo, setBookingInfo] = useState();
-    const [name, setName] = React.useState();
-    const [time, setTime] = React.useState();
-    const [price, setPrice] = React.useState();
-    const [space, setSpace] = React.useState();
-    const [id, setId] = React.useState();
-
-
-
-    const handleVChange = (event) => {
-        setId(event.target.value);
-      };
-    const handleChange = (event) => {
-        setSpace(event.target.value);
-      };
-      const handleNameChange = (event) => {
-        setName(event.target.value);
-      };
-      const handleTimeChange = (event) => {
-        setTime(event.target.value);
-      };
-      const handlePriceChange = (event) => {
-        setPrice(event.target.value);
-      };
+    
     const handleOpen = () => {
       setOpen(true);
     };
@@ -57,43 +36,31 @@ const AddService = () => {
       setOpen(false);
     };
 
+ const { register, handleSubmit , reset } = useForm();
+  const onSubmit = data => {
+    console.log(data);
+    fetch('http://localhost:5000/add/services' , {
+      method:'POST',
+      headers:{
+          'content-type': 'application/json'
+      },
+      body: JSON.stringify(data)
+  })
+  .then(res => res.json())
+  .then(data => {
+      if(data.insertedId){
+          alert('success')
+          reset();
+         
+      }
+  })
+  reset()
+  }
 
-
-    const handleBookingSubmit = e => {
-        // collect data
-      
-      
-        const updateService = {
-            name,
-            time,
-            price,
-            space,
-            id
-            
-        }
-       console.log(JSON.parse(updateService))
-       
-        // send to the server
-        // fetch('https://floating-cliffs-15059.herokuapp.com/appointments', {
-        //     method: 'POST',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify(appointment)
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         if (data.insertedId) {
-        //             setBookingSuccess(true);
-        //             handleBookingClose();
-        //         }
-        //     });
-
-        e.preventDefault();
-    }
+ 
     return (
-        <div>
-            <Button onClick={handleOpen}>Add Service</Button>
+        <div style={{textAlign:'left'}}>
+            <Button style={{backgroundColor:'#5CE7ED' , color:'white'}} onClick={handleOpen}>Add Service</Button>
             <div>
             <Modal
         aria-labelledby="transition-modal-title"
@@ -107,75 +74,17 @@ const AddService = () => {
         }}
       >
         <Fade in={open}>
-          <Box sx={style}>
-          <form onSubmit={handleBookingSubmit} style={{ maxWidth:'400px',margin:'30px 30px 30px 30px'}}>
-         
-         
-          <TextField
-                            required
-                            sx={{ width: '90%', m: 1 }}
-                            id="outlined-size-small"
-                            name="id"
-                            type="number"
-                            InputProps={{ inputProps: { min: 3, max: 10 } }}
-                            
-                            onChange={handleVChange}
-                          
-                            size="small"
-                        />
-          <TextField
-                            required
-                            sx={{ width: '90%', m: 1 }}
-                            id="outlined-size-small"
-                            name="Time"
-                           
-                            
-                          
-                            onChange={handleNameChange}
-                          
-                            size="small"
-                        />
-                         <TextField
-                            required
-                            sx={{ width: '90%', m: 1 }}
-                            id="outlined-size-small"
-                            name="Time"
-                           
-                            
-                            
-                            onChange={handleTimeChange}
-                          
-                            size="small"
-                        />
-                      
-                      
-                       <TextField
-                            required
-                            sx={{ width: '90%', m: 1 }}
-                            id="outlined-size-small"
-                            name="price"
-                            type="number"
-                            
-                         
-                            onChange={handlePriceChange}
-                          
-                            size="small"
-                        />
-                         <TextField
-                            required
-                            sx={{ width: '90%', m: 1 }}
-                            id="outlined-size-small"
-                            name="space"
-                            type="number"
-                            InputProps={{ inputProps: { min: 0, max: 10 } }}
-                            
-                            onChange={handleChange}
-                          
-                            size="small"
-                        />
-                        <div style={{ textAlign:'right' , marginRight:'40px'}}><Button style={{backgroundColor:'#5CE7ED' }} type="submit" variant="contained">Send</Button></div>
-
-                        </form>
+          <Box sx={style} style={{textAlign:'center'}}>
+          <form onSubmit={handleSubmit(onSubmit)}>
+      <input {...register("name", { required: true, maxLength: 20 })} />
+      <input {...register("time")} />
+      <input type="number" {...register("price", {
+    valueAsNumber: true,
+  })}/>
+      <input type="number" {...register("space", { min: 1, max: 12 ,valueAsNumber: true})} />
+      <br /><br />
+      <input type="submit" />
+    </form>
 
           </Box>
         </Fade>
