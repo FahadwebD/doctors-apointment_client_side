@@ -13,7 +13,7 @@ const useVisitedPatients =()=>{
 
       fetch('https://floating-cliffs-15059.herokuapp.com/prescriptions')
       .then(res => res.json())
-      .then(data => setCheck(data))
+      .then(data => setCheck(data.reverse()))
 
     
      

@@ -12,7 +12,7 @@ const useCounts = ()=>{
 
         fetch('https://floating-cliffs-15059.herokuapp.com/all/appointments')
         .then(res => res.json())
-        .then(data => setAppointments(data))
+        .then(data => setAppointments(data.reverse()))
 
 
     },[])
@@ -21,7 +21,7 @@ const useCounts = ()=>{
 
         fetch('https://floating-cliffs-15059.herokuapp.com/users')
         .then(res => res.json())
-        .then(data => setAllPatients(data.filter(d=> !d.role)))
+        .then(data => setAllPatients(data.filter(d=> !d.role).reverse()))
 
 
     },[])
@@ -40,7 +40,7 @@ const useCounts = ()=>{
         const update =moment(date).format('M/D/Y')
         fetch(`https://floating-cliffs-15059.herokuapp.com/today/appointments?date=${update}`)
         .then(res => res.json())
-        .then(data => setTodayAppointments(data))
+        .then(data => setTodayAppointments(data.reverse()))
 
 
     },[])

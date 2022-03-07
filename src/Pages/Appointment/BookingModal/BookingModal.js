@@ -89,7 +89,7 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, result ,
         }
        console.log(appointment)
         
-        fetch('http://localhost:5000/appointments', {
+        fetch('https://floating-cliffs-15059.herokuapp.com/appointments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
