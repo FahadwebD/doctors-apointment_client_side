@@ -29,7 +29,7 @@ const Booking = ({ booking, date, setBookingSuccess ,handleAddToCart  }) => {
     
     const update =moment(date).format('M/D/Y')
     useEffect(() => {
-        const url = `http://localhost:5000/count/appointments?date=${update}`
+        const url = `https://floating-cliffs-15059.herokuapp.com/count/appointments?date=${update}`
         fetch(url)
             .then(res => res.json())
             .then(data => setAppointments(data));
