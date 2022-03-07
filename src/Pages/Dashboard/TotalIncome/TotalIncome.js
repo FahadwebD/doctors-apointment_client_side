@@ -58,12 +58,18 @@ export default function TotalIncome() {
           </TableRow>
           <TableRow>
             <TableCell>Tax</TableCell>
-            <TableCell align="right">{`${(0.7* 100).toFixed(0)} %`}</TableCell>
-            <TableCell align="right">{priceTotal + 100}</TableCell>
+            <TableCell align="right">{`${(0.2* 100).toFixed(0)} %`}</TableCell>
+            <TableCell align="right">{ (0.2* priceTotal)}</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell colSpan={2}>Total</TableCell>
-            <TableCell align="right">{priceTotal + 200}</TableCell>
+
+            <TableCell>Doctors</TableCell>
+            <TableCell align="right">{`${(0.3* 100).toFixed(0)} %`}</TableCell>
+            <TableCell align="right">{(0.3* priceTotal)}</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell colSpan={2}>Total Income</TableCell>
+            <TableCell align="right">$ {priceTotal - (0.5 * priceTotal)}</TableCell>
           </TableRow>
         </TableBody>
       </Table>

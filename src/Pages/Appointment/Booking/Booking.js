@@ -65,6 +65,7 @@ const Booking = ({ booking, date, setBookingSuccess ,handleAddToCart  }) => {
                 openBooking={openBooking}
                 handleBookingClose={handleBookingClose}
                 setBookingSuccess={setBookingSuccess}
+                result={result}
             ></BookingModal>
         </>
     );

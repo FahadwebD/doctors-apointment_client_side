@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -26,18 +26,45 @@ const style = {
 };
 
 
-const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBookingSuccess }) => {
-    const [doctor, setDoctor] = React.useState('fahad');
+const BookingModal = ({ openBooking, handleBookingClose, booking, date, result ,setBookingSuccess }) => {
+    const [doctor, setDoctor] = React.useState('');
+
+     const [visitingTime , setVisitingTime] = React.useState();
+     const [newSerial , setNewSerial] = React.useState();
+
+
     const { name, time, price } = booking;
     const {doctors} = useDoctors()
     const { user } = useAuth();
     const initialInfo = { patientName: user.displayName, email: user.email, phone: '' }
     const [bookingInfo, setBookingInfo] = useState(initialInfo);
     const {todayAppointments} = useCounts()
-
+  
     
 
+  
    
+
+//    const convertFrom12To24Format = (time12) => {
+//     console.log(time12)
+    
+//     const getTime  = moment(time12, ["h:mm A"]).format("HH:mm")
+//     var travelTime = moment(time12, ["h:mm A"]).add(`${serial}`, 'hours').format('hh:mm A');
+//     console.log(getTime)
+//     setVisitingTime(travelTime)
+//     setSerial(todayAppointments?.length+1)
+//   }
+
+
+ useEffect(()=>{
+     let serial = result
+    const getTime  = moment(time, ["h:mm A"]).format("HH:mm")
+    var travelTime = moment(time, ["h:mm A"]).add(`${serial}`, 'hours').format('hh:mm A');
+    console.log(getTime)
+    setVisitingTime(travelTime)
+    setNewSerial(result+1)
+ },[time ,result])
+
     const handleOnBlur = e => {
         const field = e.target.name;
         const value = e.target.value;
@@ -56,11 +83,13 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
             price,
             serviceName: name,
             date: update,
+            visitAt:visitingTime,
+            yourSerial:newSerial,
             status:'pending'
         }
-       
-        // send to the server
-        fetch('https://floating-cliffs-15059.herokuapp.com/appointments', {
+       console.log(appointment)
+        
+        fetch('http://localhost:5000/appointments', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -97,7 +126,7 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
            
         >
             <Fade in={openBooking}>
-               {todayAppointments?.length >= 50? <div><h1>Sorry No More Appointments Today</h1></div>: <Box sx={style} style={{border:'none' , width:'600px' , padding:'20px' , borderRadius:'10px' ,margin:'20px'}}>
+             <Box sx={style} style={{border:'none' , width:'600px' , padding:'20px' , borderRadius:'10px' ,margin:'20px'}}>
                     <Typography style={{textAlign:"center" , color:'#5CE7ED'}} id="transition-modal-title" variant="h6" component="h2">
                         {name}
                     </Typography>
@@ -106,16 +135,16 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
                             disabled
                             sx={{ width: '90%', m: 1 }}
                             id="outlined-size-small"
-                            defaultValue={time}
+                            label="Visiting Time"
+                            defaultValue={visitingTime}
                             size="small"
                         />
                         <TextField
-                            required
+                            disabled
                             sx={{ width: '90%', m: 1 }}
                             id="outlined-size-small"
-                            name="patientName"
-                            onBlur={handleOnBlur}
-                          
+                            label="Serial No"
+                            defaultValue={newSerial}
                             size="small"
                         />
                         <TextField
@@ -123,7 +152,7 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
                             id="outlined-size-small"
                             name="email"
                             onBlur={handleOnBlur}
-                            label="Read Only"
+                            label="Your Mail"
                             defaultValue={user?.email}
                             size="small"
                             InputProps={{
@@ -136,7 +165,7 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
                             id="outlined-size-small"
                             name="phone"
                             onBlur={handleOnBlur}
-                            defaultValue="Phone Number"
+                            label="Your Contact"
                             size="small"
                         />
                         <TextField
@@ -164,9 +193,9 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, setBooki
           ))}
         </TextField>
                         <div style={{ textAlign:'right' , marginRight:'40px'}}><Button style={{backgroundColor:'#5CE7ED' }} type="submit" variant="contained">Send</Button></div>
-                        
+                      
                     </form>
-                </Box>}
+                </Box>
             </Fade>
         </Modal>
     );

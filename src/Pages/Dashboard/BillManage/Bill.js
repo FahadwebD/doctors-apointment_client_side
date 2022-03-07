@@ -31,7 +31,7 @@ const Bill = ({data}) => {
                 <h4>Name: {data.name}</h4>
             <h5>{data.email} </h5>
             <h5>Total Patients:  {result?.length}</h5>
-            <h5>Total Income: {total}</h5>
+            <h5>Total Income: $ {total - (0.8 * total)}</h5>
             
             
         </div>
