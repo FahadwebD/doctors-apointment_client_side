@@ -17,7 +17,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import ChromeReaderModeIcon from '@mui/icons-material/ChromeReaderMode';
 import MoreIcon from '@mui/icons-material/MoreVert';
 import MedicalServicesIcon from '@mui/icons-material/MedicalServices';
-import ReviewsIcon from '@mui/icons-material/Reviews';
+import AddTaskIcon from '@mui/icons-material/AddTask';
 import DashboardCustomizeRoundedIcon from '@mui/icons-material/DashboardCustomizeRounded';
 import LoginIcon from '@mui/icons-material/Login';
 import Avatar from '@mui/material/Avatar';
@@ -156,7 +156,7 @@ console.log(navUse)
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-    {navUse &&  <Link to='/dashboard'>
+    {navUse &&  <Link to='/dashboard' style={{textDecoration:'none'}}>
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           
@@ -167,7 +167,7 @@ console.log(navUse)
       </MenuItem>
     </Link>}
     
-     <Link to='/appointment'> <MenuItem>
+     <Link to='/appointment' style={{textDecoration:'none'}}> <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
           
             <MedicalServicesIcon />
@@ -183,6 +183,16 @@ console.log(navUse)
           
         </IconButton>
         <p>Blogs</p>
+      </MenuItem>
+    </Link>
+    <Link to='/booked' style={{textDecoration:'none'}}>
+    <MenuItem>
+        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+          
+            <AddTaskIcon />
+          
+        </IconButton>
+        <p>Booked Info</p>
       </MenuItem>
     </Link>
    
@@ -206,16 +216,9 @@ console.log(navUse)
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" style={{backgroundColor: '#5CE7ED'}}>
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
+       
+         <Link to='/' style={{textDecoration:'none' , color:'white' , fontWeight:'bolder'}}>
+         <Typography
             variant="h6"
             noWrap
             component="div"
@@ -223,6 +226,7 @@ console.log(navUse)
           >
             Doctor Portal
           </Typography>
+         </Link>
        
           <Box sx={{ flexGrow: 2 }} />
 
@@ -252,7 +256,7 @@ console.log(navUse)
             </Tooltip>
             </div>
             <div style={{marginTop:'20px', marginRight:'15px'}}>
-          <Tooltip title="Dental Services" arrow>
+          <Tooltip title="blogs" arrow>
          <Link to='/blogs' style={{ textDecoration: 'none' , color:"inherit"}}>
         
             
@@ -262,7 +266,17 @@ console.log(navUse)
          </Link>
             </Tooltip>
             </div>
-           
+            <div style={{marginTop:'20px', marginRight:'15px'}}>
+          <Tooltip title="booked information" arrow>
+         <Link to='/booked' style={{ textDecoration: 'none' , color:"inherit"}}>
+        
+            
+                Booked Info
+               
+            
+         </Link>
+            </Tooltip>
+            </div>
            
            
             <IconButton

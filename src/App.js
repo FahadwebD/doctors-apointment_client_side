@@ -21,6 +21,7 @@ import Blogs from './Pages/Blogs/Blogs/Blogs';
 import NotFound from './Pages/NotFound/NotFound';
 import BlogsDetail from './Pages/Blogs/BlogsDetail/BlogsDetail';
 import MyPrescriptions from './Pages/MyPrescriptions/MyPrescriptions';
+import BookedInfo from './Pages/BookedInfo/BookedInfo/BookedInfo';
 
 
 function App() {
@@ -43,6 +44,9 @@ function App() {
             </Route>
             <Route path="/blogs">
               <Blogs />
+            </Route>
+            <Route path="/booked">
+              <BookedInfo/>
             </Route>
             
             <Route path="/home">
