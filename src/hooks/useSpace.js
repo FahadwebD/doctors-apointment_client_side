@@ -35,9 +35,9 @@ const useSpace = ()=>{
             const arr =[]
          for (const t of services){
              // console.log(t.serviceName)
-             const result = todayAppointments?.filter(s => s.serviceName == t.name)
-             setResult(result?.length)
-             arr.push(result)
+             const r = todayAppointments?.filter(s => s.serviceName == t.name)
+             setResult(r)
+             arr.push(t.name)
              setArr(arr)
          }
         }

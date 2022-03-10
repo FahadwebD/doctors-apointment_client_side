@@ -20,7 +20,7 @@ const Booking = ({ booking, date, setBookingSuccess ,handleAddToCart  }) => {
         // console.log(result)
         
         const getV = result?.length
-       
+      
         const total = space - getV
         setResult(total )
 
@@ -37,7 +37,7 @@ const Booking = ({ booking, date, setBookingSuccess ,handleAddToCart  }) => {
     
 
 
-console.log(appointments)
+console.log(appointments.length)
 
 
 
@@ -74,6 +74,7 @@ console.log(appointments)
                 handleBookingClose={handleBookingClose}
                 setBookingSuccess={setBookingSuccess}
                 result={result}
+                appointments={appointments.length}
             ></BookingModal>
         </>
     );

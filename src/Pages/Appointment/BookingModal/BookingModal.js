@@ -26,7 +26,7 @@ const style = {
 };
 
 
-const BookingModal = ({ openBooking, handleBookingClose, booking, date, result ,setBookingSuccess }) => {
+const BookingModal = ({ openBooking, handleBookingClose, booking, date, result ,setBookingSuccess , appointments }) => {
     const [doctor, setDoctor] = React.useState('');
 
      const [visitingTime , setVisitingTime] = React.useState();
@@ -38,32 +38,17 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, result ,
     const { user } = useAuth();
     const initialInfo = { patientName: user.displayName, email: user.email, phone: '' }
     const [bookingInfo, setBookingInfo] = useState(initialInfo);
-    const {todayAppointments} = useCounts()
-  
     
-
   
-   
-
-//    const convertFrom12To24Format = (time12) => {
-//     console.log(time12)
-    
-//     const getTime  = moment(time12, ["h:mm A"]).format("HH:mm")
-//     var travelTime = moment(time12, ["h:mm A"]).add(`${serial}`, 'hours').format('hh:mm A');
-//     console.log(getTime)
-//     setVisitingTime(travelTime)
-//     setSerial(todayAppointments?.length+1)
-//   }
-
 
  useEffect(()=>{
-     let serial = result
+   
     const getTime  = moment(time, ["h:mm A"]).format("HH:mm")
-    var travelTime = moment(time, ["h:mm A"]).add(`${serial}`, 'hours').format('hh:mm A');
+    var travelTime = moment(time, ["h:mm A"]).add(`${newSerial}`, 'hours').format('hh:mm A');
     console.log(getTime)
     setVisitingTime(travelTime)
-    setNewSerial(result+1)
- },[time ,result])
+    setNewSerial(appointments+1)
+ },[time,appointments, newSerial])
 
     const handleOnBlur = e => {
         const field = e.target.name;

@@ -13,13 +13,14 @@ import moment from 'moment';
 const Appointments = ({ date }) => {
     const { user, token } = useAuth();
     const [appointments, setAppointments] = useState([])
+    
     const update =moment(date).format('M/D/Y')
     useEffect(() => {
-        const url = `https://floating-cliffs-15059.herokuapp.com/appointments?email=${user.email}&date=${update}`
+        const url = `https://floating-cliffs-15059.herokuapp.com/count/appointments?date=${update}`
         fetch(url)
             .then(res => res.json())
             .then(data => setAppointments(data));
-    }, [update, user.email, token])
+    }, [update])
 console.log(token)
     return (
         <div>

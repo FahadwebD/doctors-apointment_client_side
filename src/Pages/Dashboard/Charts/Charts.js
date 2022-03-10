@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, AreaChart, Area, BarChart, Bar, PieChart, Pie } from 'recharts';
 
 
@@ -8,6 +8,8 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import useSpace from '../../../hooks/useSpace';
+import useCounts from '../../../hooks/useCounts';
 
 
 
@@ -23,7 +25,31 @@ const Item = styled(Paper)(({ theme }) => ({
 const Charts =() => {
     const {services} = useServices()
     const {allData , check} = useData()
-    
+    const {arr , result} = useSpace()
+    const {todayAppointments} = useCounts()
+
+
+
+
+
+    useEffect(()=>{
+      if(todayAppointments){
+          let arr =[]
+          let obj ={}
+       for (const t of todayAppointments){
+           console.log(t.serviceName)
+           
+           const count = todayAppointments.filter((obj) => obj.serviceName==t.serviceName).length;
+
+           console.log(count);
+           arr.push(t.serviceName)
+           console.log(arr)
+       }
+
+      }
+  },[todayAppointments , services])
+
+  console.log(services)
   return (
     <>
 
