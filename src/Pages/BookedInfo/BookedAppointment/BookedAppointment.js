@@ -26,28 +26,29 @@ const BookedAppointment = ({booking}) => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const {patientName,selectedDoctor ,serviceName,date , visitAt ,yourSerial , _id , time   } = booking;
-    const [value, setValue] = React.useState(date );
+    const [value, setValue] = React.useState(date);
     const [serialNo , setSerialNo] = useState()
+    const [timing , setTiming] = useState()
     const handleChange = (newValue) => {
       setValue(newValue);
     };
     console.log(value)
     const update =moment(value).format('M/D/Y')
     useEffect(() => {
-        const url = `http://localhost:5000/appointments?service=${serviceName}&date=${update}`
+        const url = `https://floating-cliffs-15059.herokuapp.com/appointments?service=${serviceName}&date=${update}`
         fetch(url)
             .then(res => res.json())
-            .then(data => setSerialNo(data));
+            .then(data => setSerialNo(data.length+1));
     }, [update , serviceName])
-    console.log(serialNo)
+  
 
 
     useEffect(()=>{
         
        const getTime  = moment(time, ["h:mm A"]).format("HH:mm")
-       var travelTime = moment(time, ["h:mm A"]).add(`${serialNo?.length}`, 'hours').format('hh:mm A');
+       var travelTime = moment(time, ["h:mm A"]).add(`${serialNo}`, 'hours').format('hh:mm A');
        console.log(getTime)
-       console.log(travelTime)
+       setTiming(travelTime)
     },[time,serialNo ])
 
 
@@ -55,6 +56,37 @@ const BookedAppointment = ({booking}) => {
 const handleReschedule = (id)=>{
 
     console.log(id)
+    const date = moment(value).format('M/D/Y')
+      
+        const updateService = {
+           
+            id,
+            serialNo,
+            timing,
+            date 
+        }
+      console.log(updateService)
+   
+     fetch('https://floating-cliffs-15059.herokuapp.com/reschedule/appointments', {
+           method: 'PUT',
+           headers: {
+               
+               'content-type': 'application/json'
+           },
+           body: JSON.stringify(updateService)
+       })
+           .then(res => res.json())
+           .then(data => {
+               if (data.modifiedCount) {
+                  
+                   console.log('ok')
+               }
+           })
+
+      
+
+    
+    // }
 
 
 }

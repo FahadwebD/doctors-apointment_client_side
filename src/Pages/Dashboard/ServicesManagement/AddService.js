@@ -39,7 +39,7 @@ const AddService = () => {
  const { register, handleSubmit , reset } = useForm();
   const onSubmit = data => {
     console.log(data);
-    fetch('http://localhost:5000/add/services' , {
+    fetch('https://floating-cliffs-15059.herokuapp.com/add/services' , {
       method:'POST',
       headers:{
           'content-type': 'application/json'

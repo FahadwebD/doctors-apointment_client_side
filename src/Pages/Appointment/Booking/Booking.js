@@ -10,6 +10,7 @@ import moment from 'moment';
 const Booking = ({ booking, date, setBookingSuccess ,handleAddToCart  }) => {
     const { name, time, space, price } = booking;
     const {todayAppointments} = useCounts()
+    const [trying , setTrying] = useState()
     const [appointments, setAppointments] = useState([])
     const [result , setResult] = useState(space)
     // const [pactice , setPractice] = useState(space)
@@ -20,7 +21,7 @@ const Booking = ({ booking, date, setBookingSuccess ,handleAddToCart  }) => {
         // console.log(result)
         
         const getV = result?.length
-      
+       setTrying(getV)
         const total = space - getV
         setResult(total )
 
@@ -74,6 +75,7 @@ console.log(appointments.length)
                 handleBookingClose={handleBookingClose}
                 setBookingSuccess={setBookingSuccess}
                 result={result}
+                trying={trying}
                 appointments={appointments.length}
             ></BookingModal>
         </>

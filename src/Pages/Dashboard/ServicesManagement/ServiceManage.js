@@ -56,7 +56,7 @@ const ServiceManage = ({service  , handleServiceDelete}) => {
         }
        console.log(updateService)
    
-       fetch('http://localhost:5000/services/edit', {
+       fetch('https://floating-cliffs-15059.herokuapp.com/services/edit', {
            method: 'PUT',
            headers: {
                

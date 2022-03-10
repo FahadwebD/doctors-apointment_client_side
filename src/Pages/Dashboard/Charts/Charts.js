@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, AreaChart, Area, BarChart, Bar, PieChart, Pie } from 'recharts';
 
 
@@ -27,26 +27,44 @@ const Charts =() => {
     const {allData , check} = useData()
     const {arr , result} = useSpace()
     const {todayAppointments} = useCounts()
-
+     const [data , setData] = useState();
 
 
 
 
     useEffect(()=>{
-      if(todayAppointments){
-          let arr =[]
-          let obj ={}
-       for (const t of todayAppointments){
-           console.log(t.serviceName)
-           
-           const count = todayAppointments.filter((obj) => obj.serviceName==t.serviceName).length;
-
-           console.log(count);
-           arr.push(t.serviceName)
-           console.log(arr)
-       }
-
+      function findOcc(arr, key){
+        let arr2 = [];
+          
+        arr?.forEach((x)=>{
+             
+          // Checking if there is any object in arr2
+          // which contains the key value
+           if(arr2.some((val)=>{ return val[key] == x[key] })){
+               
+             // If yes! then increase the occurrence by 1
+             arr2.forEach((k)=>{
+               if(k[key] === x[key]){ 
+                 k["occurrence"]++
+               }
+            })
+               
+           }else{
+             // If not! Then create a new object initialize 
+             // it with the present iteration key's value and 
+             // set the occurrence to 1
+             let a = {}
+             a[key] = x[key]
+             a["occurrence"] = 1
+             arr2.push(a);
+           }
+        })
+          
+        setData(arr2)
       }
+        
+      let key = "serviceName"
+     findOcc(todayAppointments, key)   
   },[todayAppointments , services])
 
   console.log(services)
@@ -61,7 +79,7 @@ const Charts =() => {
         <AreaChart
           width={500}
           height={300}
-          data={services}
+          data={data}
           margin={{
             top: 5,
             right: 30,
@@ -70,11 +88,11 @@ const Charts =() => {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey="serviceName" />
           <YAxis />
           <Tooltip />
           <Legend />
-          <Area type="monotone" dataKey="space" stroke="#5CE7ED" fill="#5CE7ED" />
+          <Area type="monotone" dataKey="occurrence" stroke="#5CE7ED" fill="#5CE7ED" />
         </AreaChart>
       </ResponsiveContainer>
         </Grid>
@@ -97,6 +115,9 @@ const Charts =() => {
       
         </Grid>
       </Grid>
+      <div>
+        
+      </div>
     </Box>
 
 

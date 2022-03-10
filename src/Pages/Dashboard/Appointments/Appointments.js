@@ -9,6 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
+import { Button } from '@mui/material';
 
 const Appointments = ({ date }) => {
     const { user, token } = useAuth();
@@ -32,7 +33,8 @@ console.log(token)
                             <TableCell>Name</TableCell>
                             <TableCell align="right">Time</TableCell>
                             <TableCell align="right">Service</TableCell>
-                            <TableCell align="right">Action</TableCell>
+                            <TableCell align="right">Contact</TableCell>
+                      
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -44,12 +46,10 @@ console.log(token)
                                 <TableCell component="th" scope="row">
                                     {row.patientName}
                                 </TableCell>
-                                <TableCell align="right">{row.time}</TableCell>
+                                <TableCell align="right">{row.visitAt}</TableCell>
                                 <TableCell align="right">{row.serviceName}</TableCell>
-                                <TableCell align="right">{row.payment ?
-                                    'Paid' :
-                                    <Link to={`/dashboard/payment/${row._id}`}><button>Pay</button></Link>
-                                }</TableCell>
+                                <TableCell align="right">{row.phone}</TableCell>
+                                
                             </TableRow>
                         ))}
                     </TableBody>

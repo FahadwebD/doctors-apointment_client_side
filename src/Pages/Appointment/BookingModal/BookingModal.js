@@ -26,7 +26,7 @@ const style = {
 };
 
 
-const BookingModal = ({ openBooking, handleBookingClose, booking, date, result ,setBookingSuccess , appointments }) => {
+const BookingModal = ({ trying ,openBooking, handleBookingClose, booking, date, result ,setBookingSuccess , appointments }) => {
     const [doctor, setDoctor] = React.useState('');
 
      const [visitingTime , setVisitingTime] = React.useState();
@@ -47,9 +47,9 @@ const BookingModal = ({ openBooking, handleBookingClose, booking, date, result ,
     var travelTime = moment(time, ["h:mm A"]).add(`${newSerial}`, 'hours').format('hh:mm A');
     console.log(getTime)
     setVisitingTime(travelTime)
-    setNewSerial(appointments+1)
- },[time,appointments, newSerial])
-
+    setNewSerial(trying+1)
+ },[time,trying, newSerial])
+console.log(trying+1)
     const handleOnBlur = e => {
         const field = e.target.name;
         const value = e.target.value;

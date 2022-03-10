@@ -9,7 +9,7 @@ const ServicesManagement = () => {
 
     const handleServiceDelete = (_id) =>{
      
-        const url=`http://localhost:5000/services/${_id}`
+        const url=`https://floating-cliffs-15059.herokuapp.com/services/${_id}`
         fetch(url, {
           method:'DELETE'
         })
